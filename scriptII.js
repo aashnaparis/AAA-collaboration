@@ -26,7 +26,7 @@ function isDateValid(dateString){
     return !isNaN(new Date(dateString));
 }
 
-function validateItems(event) {
+function validateItems() {
   //Check box - checking if any box is selected
 var checks = theField.querySelectorAll('input[type = "checkbox"]');
 let isChecked = false;
@@ -37,7 +37,7 @@ for(let i = 0; i < checks.length; i++){
     }
 }
 
-  event.preventDefault();
+  //event.preventDefault();
 
   if (name0.value === null || name0.value === "") {
     alert("Put your name in!");
