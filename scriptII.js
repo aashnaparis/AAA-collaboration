@@ -26,15 +26,18 @@ function isDateValid(dateString){
     return !isNaN(new Date(dateString));
 }
 
-function validateItems() {
+function validateItems(event) {
+  //Check box - checking if any box is selected
+var checks = theField.querySelectorAll('input[type = "checkbox"]');
+let isChecked = false;
+for(let i = 0; i < checks.length; i++){
+    if(checks[i].checked){
+        isChecked = true;
+        break;
+    }
+}
+
   event.preventDefault();
-  document
-    .getElementById("myForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-    });
-
-
 
   if (name0.value === null || name0.value === "") {
     alert("Put your name in!");
@@ -58,7 +61,7 @@ function validateItems() {
     alert("Put your daily calorie intake!");
     return false;
   } else if (temp.value <= 34 || temp.value >= 43 || temp.value === null || isNaN(temp.value)) {
-    alert("Put an appropriate height!");
+    alert("Put an appropriate temperature!");
     return false;
   } else if (!isChecked) {
       alert("Select a pre-existing condition!");
@@ -72,7 +75,7 @@ function validateItems() {
   } else if (!isDateValid(lastVisit.value)) {
     alert("Please enter a appropriate date!");
     return false;
-  } else if (!isDateValid(nextVisit)) {
+  } else if (!isDateValid(nextVisit.value)) {
     alert("Please enter a appropriate date!");
     return false;
   }  else {
@@ -81,4 +84,5 @@ function validateItems() {
 
 }
 document.getElementById("myForm").addEventListener("submit",validateItems);
+
 
