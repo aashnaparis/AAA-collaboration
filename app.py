@@ -66,3 +66,4 @@ async def create_patient_profile(profile_request: Patient_Profile):
     updated_profile_json = jsonable_encoder(patient_new_profile)
     return JSONResponse(updated_profile_json, status_code = 201)
 
+
