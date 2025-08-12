@@ -78,3 +78,7 @@ function validateItems() {
     console.log("Success");
   }
 }
+
+async function get_patient_data(){
+  
+}
