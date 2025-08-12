@@ -27,6 +27,7 @@ function isDateValid(dateString){
 }
 
 function validateItems() {
+  event.preventDefault();
   document
     .getElementById("myForm")
     .addEventListener("submit", function (event) {
@@ -44,7 +45,7 @@ function validateItems() {
   } else if (weight.value <= 0 || weight.value >= 600 || weight.value === null || isNaN(weight.value)) {
     alert("Put an appropriate weight!");
     return false;
-  } else if (bp.value <= 70 || bp.value >= 200 || bp.value === null || isNaN(bp.value)) {
+  } else if (bloodPressure.value <= 70 || bloodPressure.value >= 200 || bloodPressure.value === null || isNaN(bloodPressure.value)) {
     alert("Put blood pressure in");
     return false;
   } else if (height.value <= 54 || height.value >= 250 || height.value === null || isNaN(height.value)) {
@@ -68,7 +69,7 @@ function validateItems() {
   } else if (meds.value === null || meds.value === "") {
     alert("Prescription Necessary!");
     return false;
-  } else if (!isDateValid(lastVisit)) {
+  } else if (!isDateValid(lastVisit.value)) {
     alert("Please enter a appropriate date!");
     return false;
   } else if (!isDateValid(nextVisit)) {
@@ -79,4 +80,5 @@ function validateItems() {
   }
 
 }
+document.getElementById("myForm").addEventListener("submit",validateItems);
 
