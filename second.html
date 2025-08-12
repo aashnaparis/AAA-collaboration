@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Data</title>
+    <link rel="stylesheet" href="styleII.css">
+    <script src="scriptII.js"></script>
+
+  </head>
+  <body>
+    <h1>Patient Data</h1>
+
+    <div class="container">
+      <form action="">
+        <div id="fir-col" class="item">
+          <label for="name-input"
+            >Name:
+            <input type="text" placeholder="Name" id="name-input" name="name-input" />
+          </label>
+
+          <label for="age"
+            >Age:
+            <input type="number" placeholder="Age" id="age" name="age" />
+          </label>
+
+          <label for="height"
+            >Height:
+            <input type="number" placeholder="Height" id="height" name="height" />
+          </label>
+
+          <label for="gender"
+            >Choose your gender:
+            <select name="gender" id="gender" name="g-identity">
+              <option value="default">State gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="trans">Trans</option>
+              <option value="preferno">Prefer not to say</option>
+            </select>
+          </label>
+
+          <label for="weight"
+            >Weight:
+            <input
+              type="number"
+              placeholder="Weight"
+              id="weight"
+              name="weight"
+            />
+          </label>
+
+          <label for="blood-pressure"
+            >Blood Pressure:
+            <input
+              type="number"
+              placeholder="Blood Pressure"
+              id="blood-pressure"
+              name="blood-pressure"
+            />
+          </label>
+
+          <label for="temp"
+            >Temperature:
+            <input
+              type="number"
+              placeholder="Temperature"
+              id="temp"
+              name="temp"
+            />
+          </label>
+
+          <label for="cal"
+            >Calories:
+            <input type="number" placeholder="Calories" id="cal" name="cal" />
+          </label>
+
+          <label for="last-vis"
+            >Last Visited:
+            <input type="date" id="last-vis" name="last-vis" />
+          </label>
+
+          
+          <fieldset id="field-check">
+            <legend>Any Pre-Existing Condition</legend>
+
+            <label for="none"
+              >None of the Above
+              <input type="checkbox" name="none" id="none" />
+            </label>
+
+            <label for="diabetes"
+              >Diabetes
+              <input type="checkbox" name="diabetes" id="diabetes" />
+            </label>
+
+            <label for="high-blood"
+              >High Blood Pressure
+              <input type="checkbox" name="high-blood" id="high-blood" />
+            </label>
+
+            <label for="hyper"
+              >Hypertension
+              <input type="checkbox" name="hyper" id="hyper" />
+            </label>
+
+            <label for="asthma"
+              >Asthma
+              <input type="checkbox" name="asthma" id="asthma" />
+            </label>
+
+            <label for="arthritis"
+              >Arthritis
+              <input type="checkbox" name="arthritis" id="arthritis" />
+            </label>
+
+            <label for="epilepsy"
+              >Epilepsy
+              <input type="checkbox" name="epilepsy" id="epilepsy" />
+            </label>
+
+            <label for="depression"
+              >Depression
+              <input type="checkbox" name="depression" id="depression" />
+            </label>
+
+            <label for="heart-dis"
+              >Heart Disease
+              <input type="checkbox" name="heart-dis" id="heart-dis" />
+            </label>
+          </fieldset>
+
+          <label for="next-vis"
+            >Next Visit:
+            <input type="date" id="next-vis" name="next-vis" />
+          </label>
+        </div>
+
+        <hr>
+
+        <div id="sec-col">
+            <label for="doc-rem">Doctor's Remarks:</label>
+            <textarea name="doc-rem" id="doc-rem" placeholder="Doctors Note"></textarea>
+
+            <label for="meds">Medication Prescribed:</label>
+            <textarea name="meds" id="meds" placeholder="Prescription"></textarea>
+        </div>
+
+        <button type="submit" onclick="validateItems()">Submit</button>
+        <button type="reset">Reset</button>
+
+      </form>
+    </div>
+  </body>
+</html>
