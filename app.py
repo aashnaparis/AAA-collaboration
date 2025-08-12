@@ -54,11 +54,11 @@ async def get_patient_profile():
 
 @app.post("/patient_profile")
 async def create_patient_profile(profile_request: Patient_Profile):
-    patient_profile_dictionary = profile_request.model_dump(by_alias=true)
+    patient_profile_dictionary = profile_request.model_dump(by_alias=True)
     created_profile = await patient_db["patient_profiles"].insert_one(patient_profile_dictionary)
 
     new_patient_profile = await patient_db["patient_profiles"].find_one({"_id":created_profile.inserted_id})
-    
+
     new_patient_profile["_id"] = str(new_patient_profile["_id"])
 
     patient_new_profile = Patient_Profile(**new_patient_profile)
