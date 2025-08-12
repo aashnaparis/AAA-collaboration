@@ -1,6 +1,6 @@
 var name0 = document.getElementById("name-input");
 var age = document.getElementById("age");
-var genderBend = document.getElementsById("gender"); //dropdown
+var genderBend = document.getElementById("gender"); //dropdown
 var weight= document.getElementById("weight");
 var bloodPressure = document.getElementById("blood-pressure");
 var temp = document.getElementById("temp");
@@ -35,7 +35,7 @@ function validateItems() {
 
 
 
-  if (nameo.value === null || nameo.value === "") {
+  if (name0.value === null || name0.value === "") {
     alert("Put your name in!");
     return false;
   } else if (age.value <= 0 || age.value >= 100 || age.value === null || isNaN(age.value)) {
@@ -77,8 +77,6 @@ function validateItems() {
   }  else {
     console.log("Success");
   }
+
 }
 
-async function get_patient_data(){
-  
-}
