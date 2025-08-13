@@ -3,7 +3,7 @@
 //global variables
 // var nameInput = document.getElementById("nameo");
 // var age = document.getElementById("age");
-// var genderBend = document.getElementById("gender"); //dropdown
+// var gender = document.getElementById("gender"); //dropdown
 // var weight = document.getElementById("weight");
 // var diastolic = document.getElementById("dia-pressure");
 // var systolic = document.getElementById("sys-pressure");
@@ -37,12 +37,13 @@ function validateItems() {
     .getElementById("myForm")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+      postData();
     });
 
-  //global variables
+  //variables
   var nameo = document.getElementById("nameo");
   var age = document.getElementById("age");
-  var genderBend = document.getElementById("gender"); //dropdown
+  var gender = document.getElementById("gender"); //dropdown
   var weight = document.getElementById("weight");
   var diastolic = document.getElementById("dia-pressure");
   var systolic = document.getElementById("sys-pressure");
@@ -110,9 +111,9 @@ function validateItems() {
     alert("Put an appropriate height!");
     return false;
   } else if (
-    genderBend.value === null ||
-    genderBend.value === "" ||
-    genderBend.value === "default"
+    gender.value === null ||
+    gender.value === "" ||
+    gender.value === "default"
   ) {
     alert("Select a proper gender!");
     return false;
@@ -161,6 +162,8 @@ function freshStart() {
 
 //adding span tag dynamically
 function prepPrint(){
+
+  //Variables for embedded span tags
   var nameInput = document.getElementById("nameSpan");
   var ageInput = document.getElementById("ageSpan");
   var genderInput= document.getElementById("genderSpan"); //dropdown
@@ -171,26 +174,130 @@ function prepPrint(){
   var heightInput= document.getElementById("heightSpan");
   var calInput = document.getElementById("calSpan");
   var lastInput = document.getElementById("lastVis"); //date
-  var nextInput = document.getElementById("nextvis"); //date
+  var nextInput = document.getElementById("nextVis"); //date
+  var checkInput = document.getElementById("pre");
   var noteInput = document.getElementById("docSpan");
   var medInput = document.getElementById("presSpan");
 
+  //same variables form function above
+  var theField = document.getElementsByName("box"); //checkbox
+  var diastolic = document.getElementById("dia-pressure");
+  var systolic = document.getElementById("sys-pressure");
+  var temp = document.getElementById("temp");
+  // var height = document.getElementById("height");
+  var calorie = document.getElementById("cal");
+  var lastVisit = document.getElementById("last-vis"); //date
+  var nextVisit = document.getElementById("next-vis"); //date
+  var note = document.getElementById("doc-rem");
+  var meds = document.getElementById("meds");
+
+  //Populating spans
   nameInput.innerHTML = nameo.value;
   ageInput.innerHTML = age.value;
-  genderInput.innerHTML = genderBend.value;
-  weightInput.innerHTML = weight.value;
-  diaInput.innerHTML = diastolic.value;
-  sysInput.innerHTML = systolic.value;
-  tempInput.innerHTML = temp.value;
-  heightInput.innerHTML = height.value;
-  calInput.innerHTML = calorie.value;
+  heightInput.innerHTML = height.value  + "cm";
+
+  //switch case for the dropdown menu
+  switch(gender.value) {
+    case "male":
+      genderInput.innerHTML = "Male";
+      break;
+    case "female":
+      genderInput.innerHTML = "Female";
+      break;
+    case "trans":
+      genderInput.innerHTML = "Trans";
+      break;
+    case "preferno":
+      genderInput.innerHTML = "Prefer not to say";
+      break;
+  }
+
+ 
+
+  weightInput.innerHTML = weight.value + " lbs";
+  // console.log(diastolic.value);
+  diaInput.innerHTML = diastolic.value + " mmHg";
+  sysInput.innerHTML = systolic.value + " mmHg";
+  tempInput.innerHTML = temp.value + " °C";
+  
+  calInput.innerHTML = calorie.value + " calories per day";
   lastInput.innerHTML = lastVisit.value;
+
+  //getting values from the checkboxes
+  let result = "";
+  for (var i = 0; i < theField.length; i++) {
+    if (theField[i].checked) {
+      if(theField[i].value !== "none"){
+        result += theField[i].value + "  ";
+      }else{
+        result = theField[i].value;
+      }
+      
+    }
+  }
+  
+  checkInput.innerHTML = result;
   nextInput.innerHTML = nextVisit.value;
   noteInput.innerHTML = note.value;
   medInput.innerHTML = meds.value;
 
+  //creating a button to print screen when button is populated
+  var butt = document.getElementById("button");
+  var printScr = document.createElement("button");
+  printScr.textContent = "Print Screen";
+  printScr.id = "print";
+  printScr.onclick = function (){
+    window.print();
+  }
+  butt.appendChild(printScr);
+
 
 }
-async function get_patient_data(){
+
+async function getData(){
+  //want to do things with this info on the third page
+  var patientData = await fetch("https://aaa-collaboration.onrender.com/aashna");
+  var patientBody = await patientData.json();
+  console.log(patientBody);
+
+}
+
+async function postData(){
   
+  //sending all the info to api
+  var requestBody = {
+    "userId": "aashna",
+    "patient_name": nameo.value,
+    "patient_age": age.value,
+    "patient_height": height.value, 
+    "patient_gender": gender.value,
+    "patient_weight": weight.value,
+    "patient_dia": diastolic.value,
+    "patient_sys": systolic.value,
+    "patient_temp": temp.value,
+    "patient_cal": calories.value,
+    "last_visited": lastVisit.value,
+    "patient_precon": result,
+    "next_visit": nextVisit.value,
+    "doctors_remarks": note.value,
+    "meds_prescribed": meds.value
+  };
+  
+  var response = await fetch("https://aaa-collaboration.onrender.com/patient_profile",settings)
+
+   var settings = {
+        "method": "POST",
+        "headers": {
+            "Content-Type":"application/json"
+        },
+        "body": JSON.stringify(requestBody)
+    };
+
+    if(response.status != 201){
+      alert("Something went wrong!");
+    }
+
+    var responseBody = await response.json();
+    console.log(responseBody);
+
 }

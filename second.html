@@ -40,7 +40,7 @@
         </div>
 
         <div class="item">
-          <label for="gender">Choose your gender:
+          <label for="gender">Gender:
             <span id="genderSpan">
               <select name="gender" id="gender">
                 <option value="default">State gender</option>
@@ -110,42 +110,34 @@
           <fieldset id="field-check">
             <span id="pre">
               <legend>Any Pre-Existing Condition</legend>
-
-              <label for="none">None of the Above
-                <input type="checkbox" name="box" id="none" value="none" />
-              </label>
-
-              <label for="diabetes">Diabetes
-                <input type="checkbox" name="box" value="diabetes" id="diabetes" />
-              </label>
-
-              <label for="high-blood">High Blood Pressure
-                <input type="checkbox" value="high-blood" name="box" id="high-blood" />
-              </label>
-
-              <label for="hyper">Hypertension
-                <input type="checkbox"" value=" hypertension" name="box" id="hyper" />
-              </label>
-
-              <label for="asthma">Asthma
-                <input type="checkbox" value="asthma" name="box" id="asthma" />
-              </label>
-
-              <label for="arthritis">Arthritis
-                <input type="checkbox" value="arthritis" name="box" id="arthritis" />
-              </label>
-
-              <label for="epilepsy">Epilepsy
-                <input type="checkbox" value="epilepsy" name="box" id="epilepsy" />
-              </label>
-
-              <label for="depression">Depression
-                <input type="checkbox" id="depression" name="box" id="depression" />
-              </label>
-
-              <label for="heart-dis">Heart Disease
-                <input type="checkbox" value="heart-dis" name="box" id="heart-dis" />
-              </label>
+              
+              <input type="checkbox" name="box" id="none" value="None" />
+              <label for="none">None of the Above</label>
+              
+              <input type="checkbox" name="box" value="Diabetes" id="diabetes" />
+              <label for="diabetes">Diabetes</label>
+              
+              <input type="checkbox" value="High Blood Pressure" name="box" id="high-blood" />
+              <label for="high-blood">High Blood Pressure</label>
+              
+              <input type="checkbox" value="Hypertension" name="box" id="hyper" />
+              <label for="hyper">Hypertension</label>
+              
+              <input type="checkbox" value="Asthma" name="box" id="asthma" />
+              <label for="asthma">Asthma</label>
+              
+              <input type="checkbox" value="Arthritis" name="box" id="arthritis" />
+              <label for="arthritis">Arthritis</label>
+              
+              <input type="checkbox" value="Epilepsy" name="box" id="epilepsy" />
+              <label for="epilepsy">Epilepsy</label>
+              
+              <input type="checkbox" id="Depression" name="box" id="depression" />
+              <label for="depression">Depression</label>
+              
+              <input type="checkbox" value="Heart disease" name="box" id="heart-dis" />
+              <label for="heart-dis">Heart Disease</label>
+  
             </span>
           </fieldset>
         </div>
@@ -179,7 +171,7 @@
 
       </div>
 
-      <div class="item">
+      <div class="no-print item" id="button">
         <button type="submit" onclick="validateItems()">Submit</button>
         <button type="reset" onclick="freshStart()">Reset</button>
       </div>
