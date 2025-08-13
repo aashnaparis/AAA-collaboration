@@ -2,6 +2,19 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import motor.motor_asyncio
 import os
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+# Allow your frontend domain or * for all
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or ["https://yourfrontend.com"]
+    allow_credentials=True,
+    allow_methods=["*"],  # Or ["POST"]
+    allow_headers=["*"],
+)
+
 
 # -------- MongoDB Connection --------
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
