@@ -13,14 +13,14 @@ var meds = document.getElementById("meds");
 var theField = document.getElementById("field-check"); //checkbox
 
 //Check box - checking if any box is selected
-var checks = theField.querySelectorAll('input[type = "checkbox"]');
+/*var checks = theField.querySelectorAll('input[type = "checkbox"]');
 let isChecked = false;
 for(let i = 0; i < checks.length; i++){
     if(checks[i].checked){
         isChecked = true;
         break;
     }
-}
+}*/
 
 function isDateValid(dateString){
     return !isNaN(new Date(dateString));
