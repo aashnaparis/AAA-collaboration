@@ -13,7 +13,10 @@ from fastapi.middleware.cors import CORSMiddleware
 load_dotenv()
 app = FastAPI()
 
-origins = ["https://heathcareserveca.netlify.app/second.html"]
+
+origins = ["https://heathcareserveca.netlify.app",
+           "https://aaa-collaboration.onrender.com",
+           ]
 
 app.add_middleware(
     CORSMiddleware,
@@ -34,9 +37,9 @@ class Patient_Profile(BaseModel):
     patient_name: str
     #visit_date : datetime
     #patient_gender: str
-    #patient_age: int
+    patient_age: int
     #patient_bp: int 
-    patient_weight: float
+    #patient_weight: float
     #patient_temp: float
     #patient_pre_conditions: str 
     #patient_meds: str 
