@@ -154,6 +154,7 @@ function validateItems() {
   }
 }
 
+<<<<<<< HEAD
 //Reload the page
 function freshStart() {
   location.reload();
@@ -191,3 +192,8 @@ function prepPrint(){
 
 
 }
+=======
+async function get_patient_data(){
+  
+}
+>>>>>>> d3e91cadb390d42bb06888341851c90a74780094
