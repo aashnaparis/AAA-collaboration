@@ -1,47 +1,72 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-import motor.motor_asyncio
-import os
+from fastapi import FastAPI
+from fastapi.encoders import jsonable_encoder
+from pydantic import BaseModel, Field
+from fastapi.responses import JSONResponse 
+import motor.motor_asyncio 
+from typing import Annotated, List
+from bson import ObjectId 
+from datetime import datetime 
+from dotenv import load_dotenv
+import os 
 from fastapi.middleware.cors import CORSMiddleware
 
+load_dotenv()
 app = FastAPI()
 
-# Allow your frontend domain or * for all
+
+origins = ["https://heathcareserveca.netlify.app",
+           "https://aaa-collaboration.onrender.com",
+           ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or ["https://yourfrontend.com"]
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Or ["POST"]
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
+connection = motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGODB_URL"))
+patient_db = connection.patient
 
-# -------- MongoDB Connection --------
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
-client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_URI)
-db = client["hospital"]
-patients_collection = db["patients"]
+#PyObjectId = Annotated[str, BeforeValidator(str)]
 
-# -------- FastAPI App --------
-app = FastAPI()
-
-# -------- Request Model --------
-class Patient(BaseModel):
+class Patient_Profile(BaseModel):
+    id: str| None = Field(default=None, alias="_id")
+    #id: PyObjectId | None = Field(default = None, alias="patient_id")
     patient_name: str
+    #visit_date : datetime
+    #patient_gender: str
     patient_age: int
+    #patient_bp: int 
+    #patient_weight: float
+    #patient_temp: float
+    #patient_pre_conditions: str 
+    #patient_meds: str 
+    #next_visit_date: datetime
 
-# -------- POST Route --------
-@app.post("/patients")
-async def add_patient(patient: Patient):
-    data = patient.dict()
-    result = await patients_collection.insert_one(data)
+class Patient_Profile_Collection(BaseModel):
+    profile_patient: List[Patient_Profile]
 
-    if result.inserted_id:
-        return {"message": "Patient added successfully", "id": str(result.inserted_id)}
-    else:
-        raise HTTPException(status_code=500, detail="Failed to add patient")
+@app.get("/patient_profile")
+async def get_patient_profile():
+    patient_profile_collection = await patient_db["patient_profiles"].find().to_list(100)
+    for profile in patient_profile_collection:
+        profile["_id"] = str(profile["_id"])
+    return Patient_Profile_Collection(profile_patient = patient_profile_collection)
 
-# -------- Run Command --------
-# Save this file as app.py
-# Install dependencies: pip install fastapi uvicorn motor
-# Run: uvicorn app:app --reload
+@app.post("/patient_profile")
+async def create_patient_profile(profile_request: Patient_Profile):
+    patient_profile_dictionary = profile_request.model_dump(by_alias=True)
+    created_profile = await patient_db["patient_profiles"].insert_one(patient_profile_dictionary)
+
+    new_patient_profile = await patient_db["patient_profiles"].find_one({"_id":created_profile.inserted_id})
+
+    new_patient_profile["_id"] = str(new_patient_profile["_id"])
+
+    patient_new_profile = Patient_Profile(**new_patient_profile)
+
+    updated_profile_json = jsonable_encoder(patient_new_profile)
+    return JSONResponse(updated_profile_json, status_code = 201)
+
+
