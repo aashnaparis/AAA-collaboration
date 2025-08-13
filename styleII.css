@@ -22,3 +22,11 @@ h1{
     
 }
 
+@media print
+{    
+    .no-print
+    {
+        display: none !important;
+    }
+}
+
