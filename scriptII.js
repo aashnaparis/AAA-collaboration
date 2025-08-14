@@ -1,30 +1,5 @@
 //Second page javascript
 
-//global variables
-// var nameInput = document.getElementById("nameo");
-// var age = document.getElementById("age");
-// var gender = document.getElementById("gender"); //dropdown
-// var weight = document.getElementById("weight");
-// var diastolic = document.getElementById("dia-pressure");
-// var systolic = document.getElementById("sys-pressure");
-// var temp = document.getElementById("temp");
-// var height = document.getElementById("height");
-// var calorie = document.getElementById("cal");
-// var lastVisit = document.getElementById("last-vis"); //date
-// var nextVisit = document.getElementById("next-vis"); //date
-// var note = document.getElementById("doc-rem");
-// var meds = document.getElementById("meds");
-// var theField = document.getElementsByName("box"); //checkbox
-
-// //Check box - checking if any box is selected
-// let isChecked = false;
-// for (let i = 0; i < theField.length; i++) {
-//   if (theField[i].checked) {
-//     isChecked = true;
-//     break;
-//   }
-// }
-
 //Check if date is a valid mm-dd-yyyy
 function isDateValid(dateString) {
   return !isNaN(new Date(dateString));
@@ -33,11 +8,12 @@ function isDateValid(dateString) {
 
 //Make sure all inputs are valid
 function validateItems() {
+  
   document
     .getElementById("myForm")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-      postData();
+      // postData();
     });
 
   //variables
@@ -65,6 +41,8 @@ function validateItems() {
       break;
     }
   }
+  
+  
 
 
   if(nameo.value === null || nameo.value === ""){
@@ -151,6 +129,7 @@ function validateItems() {
     return false;
   } else {
     console.log("Success");
+    postData();
     prepPrint();
   }
 }
@@ -254,15 +233,44 @@ function prepPrint(){
 
 }
 
-async function getData(){
-  //want to do things with this info on the third page
-  var patientData = await fetch("https://aaa-collaboration.onrender.com/aashna");
-  var patientBody = await patientData.json();
-  console.log(patientBody);
+// async function getData(){
+//   //want to do things with this info on the third page
+//   var patientData = await fetch("https://aaa-collaboration.onrender.com/aashna");
+//   var patientBody = await patientData.json();
+//   console.log(patientBody);
 
-}
+// }
 
 async function postData(){
+
+  //same variables again
+  var nameo = document.getElementById("nameo");
+  var age = document.getElementById("age");
+  var gender = document.getElementById("gender"); //dropdown
+  var weight = document.getElementById("weight");
+  var theField = document.getElementsByName("box"); //checkbox
+  var diastolic = document.getElementById("dia-pressure");
+  var systolic = document.getElementById("sys-pressure");
+  var temp = document.getElementById("temp");
+  var height = document.getElementById("height");
+  var calorie = document.getElementById("cal");
+  var lastVisit = document.getElementById("last-vis"); //date
+  var nextVisit = document.getElementById("next-vis"); //date
+  var note = document.getElementById("doc-rem");
+  var meds = document.getElementById("meds");
+
+  //getting values from the checkboxes
+  let result = "";
+  for (var i = 0; i < theField.length; i++) {
+    if (theField[i].checked) {
+      if(theField[i].value !== "none"){
+        result += theField[i].value + "  ";
+      }else{
+        result = theField[i].value;
+      }
+      
+    }
+  }
   
   //sending all the info to api
   var requestBody = {
@@ -275,7 +283,7 @@ async function postData(){
     "patient_dia": diastolic.value,
     "patient_sys": systolic.value,
     "patient_temp": temp.value,
-    "patient_cal": calories.value,
+    "patient_cal": calorie.value,
     "last_visited": lastVisit.value,
     "patient_precon": result,
     "next_visit": nextVisit.value,
@@ -283,7 +291,7 @@ async function postData(){
     "meds_prescribed": meds.value
   };
   
-  var response = await fetch("https://aaa-collaboration.onrender.com/patient_profile",settings)
+  var response = await fetch("https://aaa-collaboration.onrender.com/",settings)
 
    var settings = {
         "method": "POST",
