@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+      
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+ 
+    background-color: rgba(0,0,0,0.4); 
+        }
+
+.modalContent {
+     background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+}
+
+.close {
+     color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header {
+  background-color: rgb(4, 71, 134);
+  height: 55px;
+  width: 1500px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: absolute;
+   justify-content: space-between; 
+  
+}
+
+.navBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+.navCont {
+  display: inline;
+  margin: 20px;
+  font-size: large;
+
+}
+
+#myBtn {
+height: 20px;
+width: 70px;
+align-self: center;
+}
+a {
+    color: aliceblue;
+  text-decoration: none;
+}
+.recipeLeft {
+  background-color: rgb(4, 71, 134);
+  padding: 20px;
+  margin: 40px;
+  width: 200px;
+  height: 200px;
+  max-width: 2000px;
+  max-height: 250px;
+  display: flex;
+  justify-self: flex-start;
+}
+
+.recipeRight {
+  background-color: rgb(4, 71, 134);
+  padding: 20px;
+  margin: 40px;
+  width: 200px;
+  height: 200px;
+  max-width: 2000px;
+  max-height: 250px;
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-start;
+  
+}
+
+.recipes {
+  background-color: rgb(184, 179, 179);
+ 
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 800px;
+  width: 1300px;
+
+  justify-content: space-between;
+  justify-content: space-around;
+  align-self: center;
+  justify-self: center;
+  align-content: center;
+  justify-content: center;
+}
+
+#portion {
+ height: 500px;
+  display: flex;
+  justify-self: center;
+  
+}
+#portionText {
+    display: flex;
+  justify-self: center;
+}
+    </style>
+</head>
+<body>
+
+
+<script>
+
+function hideMod() {
+  var modal = document.getElementById("modal");
+    modal.style.display = "none";
+}
+
+function showMod() {
+  var modal = document.getElementById("modal");
+    modal.style.display = "block";
+}
+
+</script>
+   <header>
+    <div class="navBox">
+
+      <ul class="navBar">
+         <button id="myBtn" onclick="showMod()">Sign-Up</button>   
+    <li class="navCont"><a href="recipesnacks.html">Nutricious Snacks</a></li>
+
+     <li class="navCont"><a href="recipemeals.html">Healthy Dinner Ideas</a></li>
+</ul>  
+
+    </div>
+
+
+  </header>
+  <br><br><br><br>
+
+    <h1>Insert Product Name</h1>
+    <h3>For Doctors and Patients Alike</h3>
+    <hr>
+ <h2>Recipes</h2>
+    <p>Your diet is a major determinant in your overall health. See below some popular, delicious and nourishing recipes to keep you in good health or choose from a greater selection using the navigation bar.</p>
+  
+<!-- The modal log-in page -->
+<div id="modal" class="modal">
+    <div class="modalContent">
+        <span class="close" onclick="hideMod()">&times;</span>
+        <p>   
+        <form action="" method="get">
+        <div id="container">
+            <h2>Kindly Sign-Up Below</h2>
+                <label for="fName">First Name:</label>
+                <br>
+                <input type="text" id="fName" name="fName" placeholder="Enter First Name" required>
+                <br><br>
+                <label for="lName">Last Name:</label>
+                <br>
+                <input type="text" id="lName" name="lName" placeholder="Enter Last Name" required>
+                <br><br>
+                <label for="email">Email:</label>
+                <br>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                <br><br>
+             <label for="username">Username:</label>
+             <br>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            <br> <br>
+            <label for="">Password:</label>
+            <br>
+            <input type="password" placeholder="Enter Password" required>
+            <br><br>
+           <label for="">Doctor</label>
+            <input type="radio" name="radiogroup1">
+            <label for="">Patient</label>
+            <input type="radio" name="radiogroup1">
+            <br> <br> <br>
+            <input type="button" value="Sign-Up" onclick="hideMod()">
+        </div>
+    </form>
+    </p>
+    </div>
+
+</div>
+
+
+    <!-- Recipes yum yum -->
+<!-- Divs scroll with recipe options -->
+ <div class="recipes">
+<div class="recipeLeft">
+  recipe 1
+</div>
+
+<div class="recipeLeft">
+  recipe 2
+</div>
+    
+<div class="recipeLeft">
+  recipe 3
+</div>
+<div class="recipeLeft">
+  recipe 4
+</div>
+
+
+
+
+
+<div class="recipeRight">
+  recipe 1
+</div>
+
+<div class="recipeRight">
+  recipe 2
+</div>
+    
+<div class="recipeRight">
+  recipe 3
+</div>
+<div class="recipeRight">
+  recipe 4
+</div>
+
+</div>
+<br>
+<div >
+<img id="portion" src="../images/portion.jpg" alt="portion size guide">
+<br>
+<p id="portionText">Doctors recommend adjusting your serving sizes to match the above</p> 
+</div>
+<hr>
+<section>
+  <h2>Simple Exercises You Can Do Each Day</h2>
+  <h5>*It is always best to consult your primary care doctor regarding which exercises are suitable for you</h5>
+
+<p>According to NHS, adults aged 65 and over should aim to
+be physically active every day, even if it's just light activity
+do activities that improve strength, balance and flexibility on at least 2 days a week
+do at least 150 minutes of moderate intensity activity a week or 75 minutes of vigorous intensity activity if you are already active, or a combination of both
+reduce time spent sitting or lying down and break up long periods of not moving with some activity</p>
+<span>Some exercises include:</span>
+<br><br>
+<span><strong>Light Activity</strong></span>
+<ul>
+  <li>Getting up to make a cup of tea</li>
+  <li>Moving around your home</li>
+  <li>Walking at a slow pace</li>
+  <li>Cleaning and dsting</li>
+  <li>Vacuuming</li>
+  <li>Making the bed</li>
+  <li>Standing up</li>
+</ul>
+
+
+<span><strong>Moderate Activity</strong></span>
+  <ul>
+    <li>Walking for health
+    </li>
+    <li>Riding a bike
+    </li>
+    <li>Dancing for fitness</li>
+    <li>Pushing a lawn mower</li>
+    <li>Hiking</li>
+  </ul>
+  <span><strong>Vigorous Activity</strong></span>
+  <ul>
+    <li>Running</li>
+    <li>Aerobics</li>
+    <li>Swimming</li>
+    <li>Riding a bike fast or on hills</li>
+    <li>Football</li>
+    <li>Hiking uphill</li>
+    <li>Dance for fitness</li>
+    <li>Martial arts</li>
+  </ul>
+
+   <span><strong>Muscle Strengthening Activity</strong></span>
+    <ul>
+      <li>Carrying heavy shopping bags</li>
+      <li>Yoga</li>
+      <li>Pilates</li>
+      <li>Tai chi</li>
+      <li>Lifting weights</li>
+      <li>Working with resistance bands</li>
+      <li>Doing exercises that use your own body weight, such as push-ups and sit-ups</li>
+      <li>Heavy gardening, such as digging and shovelling</li>
+    </ul>
+  </section>
+</body>
+</html>
+
