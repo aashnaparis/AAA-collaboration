@@ -16,7 +16,7 @@ app = FastAPI()
 
 
 origins = ["https://heathcareserveca.netlify.app",
-           "https://aaa-collaboration.onrender.com",
+           "https://aaa-collaboration.onrender.com/",
            ] 
 #is render part of origin?
 
