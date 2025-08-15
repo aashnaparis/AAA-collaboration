@@ -15,7 +15,7 @@ load_dotenv()
 app = FastAPI()
 
 
-origins = ["https://heathcareserveca.netlify.app/second.html"] 
+origins = ["http://127.0.0.1:5500"] 
 #is render part of origin?
 
 app.add_middleware(
