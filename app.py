@@ -10,12 +10,16 @@ from datetime import date, datetime
 from dotenv import load_dotenv
 import os 
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Depends   #use this delay running our security endpoint to ensure its actually a doctor gaining access
 
 load_dotenv()
 app = FastAPI()
 
+worker_username = "work1work2work3r"
+worker_password = "health-hub-secure"
 
-origins = ["http://localhost:5500", "http://127.0.0.1:5500"] 
+
+origins = ["http://127.0.0.1:5500/second.html", "https://aaa-collaboration-nij9.onrender.com"] 
 #is render part of origin?
 
 app.add_middleware(
@@ -52,6 +56,10 @@ class Patient_Profile(BaseModel):
 
 class Patient_Profile_Collection(BaseModel):
     profile_patient: List[Patient_Profile]
+
+class WorkerLoginRequest(BaseModel):
+    username: str
+    password: str
 
 @app.get("/profile")
 async def get_patient_profile():
@@ -94,4 +102,13 @@ async def create_patient_profile(profile_request: Patient_Profile):
     updated_profile_json = jsonable_encoder(patient_new_profile)
     return JSONResponse(updated_profile_json, status_code = 201)
 
+@app.post("/secureLogin")
+async def securityCheck(credentials: WorkerLoginRequest):
+    if credentials.username == worker_username and credentials.password == worker_password:
+        return {
+            "status": "Success",
+            "message": "Login was succesful"
+        }
+    else:
+        raise HTTPException(status_code=401, detail="Invalid username and/or password")
 
