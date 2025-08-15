@@ -285,7 +285,7 @@ async function postData(){
     "patient_temp": parseFloat(temp.value),
     "patient_cal": parseFloat(calorie.value),
     "last_visit": lastVisit.value,
-    "precon": result,
+    "pre_con": result,
     "next_visit": nextVisit.value,
     "doc_remarks": note.value,
     "prescription": meds.value
