@@ -24,12 +24,23 @@ function verifyItems(){
     event.preventDefault();
   });
 
+ 
+
   var first = document.getElementById("fName");
   var last = document.getElementById("lName");
   var email = document.getElementById("email"); 
   var username = document.getElementById("username");
   var password = document.getElementById("password");
-  var admin = document.getElementsByName("admin");
+  var admin = document.getElementsByName("admin"); 
+  
+  let isChecked = false;
+
+  for (let i = 0; i < admin.length; i++) {
+    if (admin[i].checked) {
+      isChecked = true;
+      break; // Exit the loop once a checked radio button is found
+    }
+  }
 
   if (first.value === null || first.value === "") {
     alert("Put your first name in!");
@@ -50,12 +61,9 @@ function verifyItems(){
   ){
     alert("Put an Valid Email!");
     return false;
-  }else if (!admin) {
-    let check = admin.checked;
-    if (!check) {
-      alert("Select a gender!");
+  }else if (!isChecked) {
+      alert("Select a admin!");
       return false;
-    }
   }else{
     console.log("success");
   }
