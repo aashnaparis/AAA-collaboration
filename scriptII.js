@@ -291,7 +291,7 @@ async function postData(){
     "meds_prescribed": meds.value
   };
   
-  var response = await fetch("https://aaa-collaboration.onrender.com/data",settings)
+  var response = await fetch("https://aaa-collaboration-nij9.onrender.com/data",settings)
 
    var settings = {
         "method": "POST",
