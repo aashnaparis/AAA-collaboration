@@ -15,7 +15,7 @@ load_dotenv()
 app = FastAPI()
 
 
-origins = ["http://127.0.0.1:5500/second.html", "https://aaa-collaboration-nij9.onrender.com"] 
+origins = ["http://localhost:5500"] 
 #is render part of origin?
 
 app.add_middleware(

@@ -291,7 +291,7 @@ async function postData(){
     "meds_prescribed": meds.value
   };
   
-   var settings = {
+  var settings = {
         "method": "POST",
         "headers": {
             "Content-Type":"application/json"
