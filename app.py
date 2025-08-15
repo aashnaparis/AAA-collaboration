@@ -18,8 +18,7 @@ app = FastAPI()
 worker_username = "work1work2work3r"
 worker_password = "health-hub-secure"
 
-
-origins = ["http://127.0.0.1:5500/second.html", "https://aaa-collaboration-nij9.onrender.com"] 
+origins = ["http://localhost:5500", "http://127.0.0.1:5500"] 
 #is render part of origin?
 
 app.add_middleware(
@@ -34,6 +33,7 @@ PyObjectId = Annotated[str, BeforeValidator(str)]
 connection = motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGODB_URL"))
 db = connection.patient
 info = db.data
+
 
 
 
