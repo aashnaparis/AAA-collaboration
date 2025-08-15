@@ -4,83 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-.modal{
-    display: none;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-.modalContent {
-     background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-.close {
-     color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-    </style>
+    <link rel="stylesheet" href="recipepage.css">
 </head>
 <body>
-
-<script>
-
-function hideMod() {
-  var modal = document.getElementById("modal");
-    modal.style.display = "none";
-}
-
-function showMod() {
-  var modal = document.getElementById("modal");
-    modal.style.display = "block";
-}
-
-</script>
+<script src="recipepage.js"></script>
    <header>
-    <div>
-      <ul>
-    <li><a href="recipesnacks.html">Nutricious Snacks</a></li>
+    <div class="navBox">
 
-     <li><a href="recipemeals.html">Healthy Dinner Ideas</a></li>
+      <ul class="navBar">
+         <button id="myBtn" onclick="showMod()">SIGN IN</button>   
+    <li class="navCont"><a href="recipesnacks.html">Nutricious Snacks</a></li>
+
+     <li class="navCont"><a href="recipemeals.html">Healthy Dinner Ideas</a></li>
 </ul>  
 
     </div>
 
 
   </header>
- <button id="myBtn" onclick="showMod()">Log-In</button>   
+  <br><br><br><br>
+
     <h1>Insert Product Name</h1>
     <h3>For Doctors and Patients Alike</h3>
+    <hr>
+ <h2>Recipes</h2>
+    <p>Your diet is a major determinant in your overall health. See below some popular, delicious and nourishing recipes to keep you in good health or choose from a greater selection using the navigation bar.</p>
   
 <!-- The modal log-in page -->
 <div id="modal" class="modal">
     <div class="modalContent">
         <span class="close" onclick="hideMod()">&times;</span>
         <p>   
-        <form action="" method="get">
+        <form id="myForm">
         <div id="container">
-            <h2>Kindly Log-In Below</h2>
-                <label for="fName">First Name:vvv</label>
+            <h2>Kindly Sign-Up Below</h2>
+                <label for="fName">First Name:</label>
                 <br>
                 <input type="text" id="fName" name="fName" placeholder="Enter First Name" required>
                 <br><br>
@@ -90,22 +48,24 @@ function showMod() {
                 <br><br>
                 <label for="email">Email:</label>
                 <br>
-                <input type="text" id="email" name="email" placeholder="Enter Email" required>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required>
                 <br><br>
              <label for="username">Username:</label>
              <br>
             <input type="text" id="username" name="username" placeholder="Enter Username" required>
             <br> <br>
-            <label for="">Password:</label>
+            <label for="password">Password:</label>
             <br>
-            <input type="text" placeholder="Enter Password" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
             <br><br>
-           <label for="">Doctor</label>
-            <input type="radio" name="radiogroup1">
-            <label for="">Patient</label>
-            <input type="radio" name="radiogroup1">
+           <label for="Doctor">Doctor</label>
+            <input type="radio" name="admin" id="doctor">
+            <label for="patient">Patient</label>
+            <input type="radio" name="admin" id="patient">
             <br> <br> <br>
-            <input type="button" value="Log-in" onclick="hideMod()">
+             <!-- testing a change-->
+            <input type="button" value="Sign-In" onclick="EmployeeAccess()">
+            <button type="reset">Reset</button>
         </div>
     </form>
     </p>
@@ -115,7 +75,107 @@ function showMod() {
 
 
     <!-- Recipes yum yum -->
+<!-- Divs scroll with recipe options -->
+ <div class="recipes">
+<div class="recipeLeft">
+  recipe 1
+</div>
 
+<div class="recipeLeft">
+  recipe 2
+</div>
     
+<div class="recipeLeft">
+  recipe 3
+</div>
+<div class="recipeLeft">
+  recipe 4
+</div>
+
+
+
+
+
+<div class="recipeRight">
+  recipe 1
+</div>
+
+<div class="recipeRight">
+  recipe 2
+</div>
+    
+<div class="recipeRight">
+  recipe 3
+</div>
+<div class="recipeRight">
+  recipe 4
+</div>
+
+</div>
+<br>
+<div >
+<img id="portion" src="../images/portion.jpg" alt="portion size guide">
+<br>
+<p id="portionText">Doctors recommend adjusting your serving sizes to match the above</p> 
+</div>
+<hr>
+<section>
+  <h2>Simple Exercises You Can Do Each Day</h2>
+  <h5>*It is always best to consult your primary care doctor regarding which exercises are suitable for you</h5>
+
+<p>According to NHS, adults aged 65 and over should aim to
+be physically active every day, even if it's just light activity
+do activities that improve strength, balance and flexibility on at least 2 days a week
+do at least 150 minutes of moderate intensity activity a week or 75 minutes of vigorous intensity activity if you are already active, or a combination of both
+reduce time spent sitting or lying down and break up long periods of not moving with some activity</p>
+<span>Some exercises include:</span>
+<br><br>
+<span><strong>Light Activity</strong></span>
+<ul>
+  <li>Getting up to make a cup of tea</li>
+  <li>Moving around your home</li>
+  <li>Walking at a slow pace</li>
+  <li>Cleaning and dsting</li>
+  <li>Vacuuming</li>
+  <li>Making the bed</li>
+  <li>Standing up</li>
+</ul>
+
+
+<span><strong>Moderate Activity</strong></span>
+  <ul>
+    <li>Walking for health
+    </li>
+    <li>Riding a bike
+    </li>
+    <li>Dancing for fitness</li>
+    <li>Pushing a lawn mower</li>
+    <li>Hiking</li>
+  </ul>
+  <span><strong>Vigorous Activity</strong></span>
+  <ul>
+    <li>Running</li>
+    <li>Aerobics</li>
+    <li>Swimming</li>
+    <li>Riding a bike fast or on hills</li>
+    <li>Football</li>
+    <li>Hiking uphill</li>
+    <li>Dance for fitness</li>
+    <li>Martial arts</li>
+  </ul>
+
+   <span><strong>Muscle Strengthening Activity</strong></span>
+    <ul>
+      <li>Carrying heavy shopping bags</li>
+      <li>Yoga</li>
+      <li>Pilates</li>
+      <li>Tai chi</li>
+      <li>Lifting weights</li>
+      <li>Working with resistance bands</li>
+      <li>Doing exercises that use your own body weight, such as push-ups and sit-ups</li>
+      <li>Heavy gardening, such as digging and shovelling</li>
+    </ul>
+  </section>
 </body>
 </html>
+

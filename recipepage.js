@@ -69,3 +69,32 @@ function verifyItems(){
   }
 
 }
+
+async function EmployeeAccess(){
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+
+  var requestBody = {
+    "username": username,
+    "password": password
+  };
+
+  var settings = {
+        "method": "POST",
+        "headers": {
+            "Content-Type":"application/json"
+        },
+        "body": JSON.stringify(requestBody)
+    }; 
+
+  var response = await fetch("https://aaa-collaboration-nij9.onrender.com/secureLogin",settings)
+
+  if(response.status != 200){
+      alert("Access Denied: Unauthorized User");
+    }
+    else{
+       var responseBody = await response.json();
+       console.log(responseBody);
+       window.location.href = "second.html";
+    }
+}
