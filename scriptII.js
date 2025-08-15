@@ -274,7 +274,7 @@ async function postData(){
   
   //sending all the info to api
   var requestBody = {
-    "userId": "aashna",
+    // "userId": "aashna",
     "patient_name": nameo.value,
     "patient_age": age.value,
     "patient_height": height.value, 
@@ -284,11 +284,11 @@ async function postData(){
     "patient_sys": systolic.value,
     "patient_temp": temp.value,
     "patient_cal": calorie.value,
-    "last_visited": lastVisit.value,
-    "patient_precon": result,
+    "last_visit": lastVisit.value,
+    "precon": result,
     "next_visit": nextVisit.value,
-    "doctors_remarks": note.value,
-    "meds_prescribed": meds.value
+    "doc_remarks": note.value,
+    "prescription": meds.value
   };
   
   var settings = {
