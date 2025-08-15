@@ -6,7 +6,7 @@ from pydantic import BaseModel,Field, BeforeValidator
 import motor.motor_asyncio 
 from typing import Annotated, List
 from bson import ObjectId 
-from datetime import date
+from datetime import date, datetime
 from dotenv import load_dotenv
 import os 
 from fastapi.middleware.cors import CORSMiddleware
@@ -46,7 +46,7 @@ class Patient_Profile(BaseModel):
     patient_cal: float
     last_visit: date
     pre_con: str
-    last_visit: date
+    next_visit: date
     doc_remarks: str
     prescription: str
 
@@ -56,23 +56,36 @@ class Patient_Profile_Collection(BaseModel):
 @app.get("/profile")
 async def get_patient_profile():
     try:
-      patient_profile_collection = await info["patient_profiles"].find().to_list(100)
+        profiles = await info.find().to_list(100)
 
-      if not patient_profile_collection:
-          raise HTTPException(404, "Patient Profile is not found")
-      
-      for profile in patient_profile_collection:
-            profile["_id"] = str(profile["_id"])
-      return Patient_Profile_Collection(profile_patient = patient_profile_collection)
+        if not profiles:
+            raise HTTPException(404, "No profiles found")
+
+        for profile in profiles:
+            profile["_id"] = str(profile["_id"])  # Convert ObjectId to string
+
+        return Patient_Profile_Collection(profile_patient=profiles)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/data")
 async def create_patient_profile(profile_request: Patient_Profile):
-    patient_profile_dictionary = profile_request.model_dump(by_alias=True)
-    created_profile = await info["patient_profiles"].insert_one(patient_profile_dictionary)
 
-    new_patient_profile = await info["patient_profiles"].find_one({"_id":created_profile.inserted_id})
+    patient_profile_dictionary = profile_request.model_dump(by_alias=True, exclude_none=True)
+
+    # Convert all date objects to datetime
+    for key in ["last_visit", "next_visit"]:
+        if isinstance(patient_profile_dictionary[key], date):
+            patient_profile_dictionary[key] = datetime(
+                patient_profile_dictionary[key].year,
+                patient_profile_dictionary[key].month,
+                patient_profile_dictionary[key].day
+            )
+
+
+    created_profile = await info.insert_one(patient_profile_dictionary)
+
+    new_patient_profile = await info.find_one({"_id":created_profile.inserted_id})
 
     new_patient_profile["_id"] = str(new_patient_profile["_id"])
 

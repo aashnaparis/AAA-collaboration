@@ -291,15 +291,15 @@ async function postData(){
     "meds_prescribed": meds.value
   };
   
-  var response = await fetch("https://aaa-collaboration-nij9.onrender.com/data",settings)
-
    var settings = {
         "method": "POST",
         "headers": {
             "Content-Type":"application/json"
         },
         "body": JSON.stringify(requestBody)
-    };
+    }; 
+    
+    var response = await fetch("https://aaa-collaboration-nij9.onrender.com/data",settings)
 
     if(response.status != 201){
       alert("Something went wrong!");
