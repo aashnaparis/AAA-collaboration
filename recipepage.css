@@ -39,7 +39,7 @@
 header {
   background-color: rgb(4, 71, 134);
   height: 55px;
-  width: 1500px;
+  width: 1200px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -74,10 +74,10 @@ a {
 }
 .recipeLeft {
   background-color: rgb(4, 71, 134);
-  padding: 20px;
+  padding: 5px;
   margin: 40px;
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
   max-width: 2000px;
   max-height: 250px;
   display: flex;
@@ -86,16 +86,21 @@ a {
 
 .recipeRight {
   background-color: rgb(4, 71, 134);
-  padding: 20px;
+padding: 5px;
   margin: 40px;
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
   max-width: 2000px;
   max-height: 250px;
   display: flex;
   justify-self: flex-end;
   align-self: flex-start;
   
+}
+
+.recipeCont{
+  height: 240px;
+  width: 240px;
 }
 
 .recipes {
