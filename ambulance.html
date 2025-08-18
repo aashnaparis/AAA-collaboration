@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance Animation</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #e6f7ff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content:  space-around;
+      align-items: center;
+    }
+
+    .road {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #333;
+    }
+
+    .ambulance {
+      position: absolute;
+      bottom: 20px;
+      left: -200px; /* start off screen */
+      width: 150px;
+      height: auto;
+      animation: drive 6s ease-in-out forwards;
+    }
+
+    @keyframes drive {
+      0% { left: 120%; }
+      40% { left: 40%; }   /* stop near the middle */
+      60% { left: 40%; }   /* wait a bit */
+      100% { left: -200px; } /* drive off the screen */
+    }
+  </style>
+</head>
+<body>
+  <div class="road">
+    <!-- Replace with ambulance graphic (svg/png/gif) -->
+    <img src="Ambulance-free-to-use-clip-art.png" class="ambulance" alt="ambulance">
+  </div>
+  <div class="road">
+    <!-- Replace with ambulance graphic (svg/png/gif) -->
+    <img src="Ambulance-free-to-use-clip-art.png" class="ambulance" alt="ambulance">
+  </div>
+  <div class="road">
+    <!-- Replace with ambulance graphic (svg/png/gif) -->
+    <img src="Ambulance-free-to-use-clip-art.png" class="ambulance" alt="ambulance">
+  </div>
+  <script>
+    document.getElementById("panic-btn").addEventListener("click", () => {
+  document.querySelector(".ambulance").style.animation = "drive 6s linear forwards";
+});
+
+  </script>
+
+</body>
+</html>
