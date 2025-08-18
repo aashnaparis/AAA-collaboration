@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="recipepage.css">
+</head>
+<body>
+<script src="recipepage.js"></script>
+   <header>
+    <div class="navBox">
+
+      <ul class="navBar">
+        <li>
+           <button id="myBtn" onclick="showMod()">LOGIN / SIGN UP</button>  
+        </li>
+          
+    <li class="navCont"><a href="recipesnacks.html">Nutricious Snacks</a></li>
+
+     <li class="navCont"><a href="recipemeals.html">Healthy Dinner Ideas</a></li>
+</ul>  
+
+    </div>
+
+
+  </header>
+  <br><br><br><br>
+
+    <h1>Insert Product Name</h1>
+    <h3>For Doctors and Patients Alike</h3>
+    <hr>
+ <h2>Recipes</h2>
+    <p>Your diet is a major determinant in your overall health. See below some popular, delicious and nourishing recipes to keep you in good health or choose from a greater selection using the navigation bar.</p>
+  
+<!-- The modal sign-up page -->
+<div id="modal" class="modal">
+    <div class="modalContent">
+        <span class="close" onclick="hideMod()">&times;</span>   
+          <div id="loginform">
+            <h2> LOGIN</h2>
+            <form action="">
+              <label for="UserName">Username:</label>
+              <br>
+              <input type="text" id="login_Username" name="login_Username" placeholder="Enter Username" required><br>
+              <br>
+
+              <label for="Email">Email:</label><br>
+              <input type="email" name="loginEmail" id="loginEmail" placeholder="Enter Email Address" required><br><br>
+
+              <label for="Password">Password: </label><br>
+              <input type="password" name="login_Password" id="login_Password" placeholder="Enter Your Password" required><br><br>
+
+              <button type="submit">LOGIN</button>
+
+              <p>Don't have an account? 
+                <a href="#" onclick="toggleform('signupForm')">Sign up here</a>
+              </p>
+            </form>
+          </div>
+
+          <form id="myForm">
+          <div id="container" style="display: none;">
+            <h2>Kindly Sign-Up Below</h2>
+                <label for="fName">First Name:</label>
+                <br>
+                <input type="text" id="fName" name="fName" placeholder="Enter First Name" required>
+                <br><br>
+                <label for="lName">Last Name:</label>
+                <br>
+                <input type="text" id="lName" name="lName" placeholder="Enter Last Name" required>
+                <br><br>
+                <label for="email">Email:</label>
+                <br>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                <br><br>
+             <label for="username">Username:</label>
+             <br>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            <br> <br>
+            <label for="password">Password:</label>
+            <br>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <br><br>
+           <label for="Doctor">Doctor</label>
+            <input type="radio" name="admin" id="doctor">
+            <label for="patient">Patient</label>
+            <input type="radio" name="admin" id="patient">
+            <br> <br> <br>
+             <!-- testing a change-->
+            <input type="submit" value="Sign-Up">
+
+            <button type="reset">Reset</button>
+            <p>Have an account already ?</p>
+
+            <p>Have an account already? <a href="#" onclick="toggleform('loginform')">Login Here</a></p>
+          </div>
+       
+          </form>
+        
+    </div>
+
+</div>
+
+
+    <!-- Recipes yum yum -->
+<!-- Divs scroll with recipe options -->
+ <div class="recipes">
+<div class="recipeLeft">
+  <a href="https://www.heartfoundation.org.nz/wellbeing/healthy-recipes/chickpea-salad-wrap"><img src="../images/chickpea-wrap.jpg" alt="" class="recipeCont" >
+</div> </a>
+  
+
+<div class="recipeLeft">
+<a href="https://www.eatingwell.com/chicken-cabbage-bowls-with-sesame-dressing-8374684"><img src="../images/chicken-cabbage-bowl-square.jpg" alt="" class="recipeCont" ></a>
+  
+</div>
+    
+<div class="recipeLeft">
+<a href="https://www.eatingwell.com/recipe/7966052/air-fryer-spaghetti-squash/">  <img src="../images/spaghetti-squash.webp" alt="" class="recipeCont" ></a>
+
+</div>
+
+<div class="recipeLeft">
+<a href="https://www.bbcgoodfood.com/recipes/indian-chickpeas-poached-eggs">  <img src="../images/indian-chickpeas.webp" alt="" class="recipeCont"></a>
+
+</div>
+
+
+
+
+
+<div class="recipeRight">
+<a href="https://www.heartfoundation.org.au/recipes/grilled-chicken-and-pineapple-turkish-melts">  <img src="../images/Grilled-chicken-and-pineapple-Turkish-melts.webp" alt="" class="recipeCont" ></a>
+
+</div>
+
+<div class="recipeRight">
+<a href="https://www.heartfoundation.org.au/recipes/grilled-pork-cutlet-with-grilled-pineapple-salsa">  <img src="../images/grilled-pork-cutlet-with-grilled-pineapple-salsa.webp" alt="" class="recipeCont" ></a>
+
+</div>
+    
+<div class="recipeRight">
+<a href="https://www.bbcgoodfood.com/recipes/prawn-curry-hurry">  <img src="../images/prawn-curry.webp" alt="" class="recipeCont" ></a>
+
+</div>
+
+<div class="recipeRight">
+<a href="https://www.bbcgoodfood.com/recipes/spicy-chicken-avocado-wraps">  <img src="../images/spicy-chicken-avocado-wrap.webp" alt="" class="recipeCont" ></a>
+
+</div>
+
+</div>
+<br>
+<div >
+<img id="portion" src="../images/portion.jpg" alt="portion size guide">
+<br>
+<p id="portionText">Doctors recommend adjusting your serving sizes to match the above</p> 
+</div>
+<hr>
+<section>
+  <h2>Simple Exercises You Can Do Each Day</h2>
+  <h5>*It is always best to consult your primary care doctor regarding which exercises are suitable for you</h5>
+
+<p>According to NHS, adults aged 65 and over should aim to
+be physically active every day, even if it's just light activity
+do activities that improve strength, balance and flexibility on at least 2 days a week
+do at least 150 minutes of moderate intensity activity a week or 75 minutes of vigorous intensity activity if you are already active, or a combination of both
+reduce time spent sitting or lying down and break up long periods of not moving with some activity</p>
+<span>Some exercises include:</span>
+<br><br>
+<span><strong>Light Activity</strong></span>
+<ul>
+  <li>Getting up to make a cup of tea</li>
+  <li>Moving around your home</li>
+  <li>Walking at a slow pace</li>
+  <li>Cleaning and dsting</li>
+  <li>Vacuuming</li>
+  <li>Making the bed</li>
+  <li>Standing up</li>
+</ul>
+
+
+<span><strong>Moderate Activity</strong></span>
+  <ul>
+    <li>Walking for health
+    </li>
+    <li>Riding a bike
+    </li>
+    <li>Dancing for fitness</li>
+    <li>Pushing a lawn mower</li>
+    <li>Hiking</li>
+  </ul>
+  <span><strong>Vigorous Activity</strong></span>
+  <ul>
+    <li>Running</li>
+    <li>Aerobics</li>
+    <li>Swimming</li>
+    <li>Riding a bike fast or on hills</li>
+    <li>Football</li>
+    <li>Hiking uphill</li>
+    <li>Dance for fitness</li>
+    <li>Martial arts</li>
+  </ul>
+
+   <span><strong>Muscle Strengthening Activity</strong></span>
+    <ul>
+      <li>Carrying heavy shopping bags</li>
+      <li>Yoga</li>
+      <li>Pilates</li>
+      <li>Tai chi</li>
+      <li>Lifting weights</li>
+      <li>Working with resistance bands</li>
+      <li>Doing exercises that use your own body weight, such as push-ups and sit-ups</li>
+      <li>Heavy gardening, such as digging and shovelling</li>
+    </ul>
+  </section>
+</body>
+</html>
+
