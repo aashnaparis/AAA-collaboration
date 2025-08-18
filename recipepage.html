@@ -12,7 +12,10 @@
     <div class="navBox">
 
       <ul class="navBar">
-         <button id="myBtn" onclick="showMod()">SIGN IN</button>   
+        <li>
+           <button id="myBtn" onclick="showMod()">LOGIN / SIGN UP</button>  
+        </li>
+          
     <li class="navCont"><a href="recipesnacks.html">Nutricious Snacks</a></li>
 
      <li class="navCont"><a href="recipemeals.html">Healthy Dinner Ideas</a></li>
@@ -30,13 +33,34 @@
  <h2>Recipes</h2>
     <p>Your diet is a major determinant in your overall health. See below some popular, delicious and nourishing recipes to keep you in good health or choose from a greater selection using the navigation bar.</p>
   
-<!-- The modal log-in page -->
+<!-- The modal sign-up page -->
 <div id="modal" class="modal">
     <div class="modalContent">
-        <span class="close" onclick="hideMod()">&times;</span>
-        <p>   
-        <form id="myForm">
-        <div id="container">
+        <span class="close" onclick="hideMod()">&times;</span>   
+          <div id="loginform">
+            <h2> LOGIN</h2>
+            <form action="">
+              <label for="UserName">Username:</label>
+              <br>
+              <input type="text" id="login_Username" name="login_Username" placeholder="Enter Username" required><br>
+              <br>
+
+              <label for="Email">Email:</label><br>
+              <input type="email" name="loginEmail" id="loginEmail" placeholder="Enter Email Address" required><br><br>
+
+              <label for="Password">Password: </label><br>
+              <input type="password" name="login_Password" id="login_Password" placeholder="Enter Your Password" required><br><br>
+
+              <button type="submit">LOGIN</button>
+
+              <p>Don't have an account? 
+                <a href="#" onclick="toggleform('signupForm')">Sign up here</a>
+              </p>
+            </form>
+          </div>
+
+          <form id="myForm">
+          <div id="container" style="display: none;">
             <h2>Kindly Sign-Up Below</h2>
                 <label for="fName">First Name:</label>
                 <br>
@@ -64,11 +88,16 @@
             <input type="radio" name="admin" id="patient">
             <br> <br> <br>
              <!-- testing a change-->
-            <input type="button" value="Sign-In" onclick="EmployeeAccess()">
+            <input type="submit" value="Sign-Up">
+
             <button type="reset">Reset</button>
-        </div>
-    </form>
-    </p>
+            <p>Have an account already ?</p>
+
+            <p>Have an account already? <a href="#" onclick="toggleform('loginform')">Login Here</a></p>
+          </div>
+       
+          </form>
+        
     </div>
 
 </div>
@@ -78,18 +107,23 @@
 <!-- Divs scroll with recipe options -->
  <div class="recipes">
 <div class="recipeLeft">
-  recipe 1
-</div>
+  <a href="https://www.heartfoundation.org.nz/wellbeing/healthy-recipes/chickpea-salad-wrap"><img src="../images/chickpea-wrap.jpg" alt="" class="recipeCont" >
+</div> </a>
+  
 
 <div class="recipeLeft">
-  recipe 2
+<a href="https://www.eatingwell.com/chicken-cabbage-bowls-with-sesame-dressing-8374684"><img src="../images/chicken-cabbage-bowl-square.jpg" alt="" class="recipeCont" ></a>
+  
 </div>
     
 <div class="recipeLeft">
-  recipe 3
+<a href="https://www.eatingwell.com/recipe/7966052/air-fryer-spaghetti-squash/">  <img src="../images/spaghetti-squash.webp" alt="" class="recipeCont" ></a>
+
 </div>
+
 <div class="recipeLeft">
-  recipe 4
+<a href="https://www.bbcgoodfood.com/recipes/indian-chickpeas-poached-eggs">  <img src="../images/indian-chickpeas.webp" alt="" class="recipeCont"></a>
+
 </div>
 
 
@@ -97,18 +131,23 @@
 
 
 <div class="recipeRight">
-  recipe 1
+<a href="https://www.heartfoundation.org.au/recipes/grilled-chicken-and-pineapple-turkish-melts">  <img src="../images/Grilled-chicken-and-pineapple-Turkish-melts.webp" alt="" class="recipeCont" ></a>
+
 </div>
 
 <div class="recipeRight">
-  recipe 2
+<a href="https://www.heartfoundation.org.au/recipes/grilled-pork-cutlet-with-grilled-pineapple-salsa">  <img src="../images/grilled-pork-cutlet-with-grilled-pineapple-salsa.webp" alt="" class="recipeCont" ></a>
+
 </div>
     
 <div class="recipeRight">
-  recipe 3
+<a href="https://www.bbcgoodfood.com/recipes/prawn-curry-hurry">  <img src="../images/prawn-curry.webp" alt="" class="recipeCont" ></a>
+
 </div>
+
 <div class="recipeRight">
-  recipe 4
+<a href="https://www.bbcgoodfood.com/recipes/spicy-chicken-avocado-wraps">  <img src="../images/spicy-chicken-avocado-wrap.webp" alt="" class="recipeCont" ></a>
+
 </div>
 
 </div>

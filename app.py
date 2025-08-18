@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 import os 
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Depends   #use this delay running our security endpoint to ensure its actually a doctor gaining access
+from passlib.hash import bcrypt
 
 load_dotenv()
 app = FastAPI()
@@ -60,6 +61,14 @@ class Patient_Profile_Collection(BaseModel):
 class WorkerLoginRequest(BaseModel):
     username: str
     password: str
+
+class SignUpData(BaseModel):
+    firstname: str
+    lastname: str
+    username: str
+    password: str
+    email: str
+    typeOfUser: str
 
 @app.get("/profile")
 async def get_patient_profile():
@@ -112,3 +121,19 @@ async def securityCheck(credentials: WorkerLoginRequest):
     else:
         raise HTTPException(status_code=401, detail="Invalid username and/or password")
 
+@app.post("/signUp")
+async def clientSignUp(signup_request: SignUpData):
+    password = bcrypt.hash(signup_request.password);
+
+    #database insertion 
+    await db.users.insert_one({
+        "firstname": signup_request.firstname,
+        "lastname": signup_request.lastname,
+        "username": signup_request.username,
+        "pasword": password,
+        "email": signup_request.email,
+        "typeOfUser": signup_request.typeOfUser
+    })
+
+    return{"username": signup_request.username,
+        "message": "User Registration Successful"}
