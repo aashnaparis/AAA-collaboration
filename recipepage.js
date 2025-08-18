@@ -95,6 +95,6 @@ async function EmployeeAccess(){
     else{
        var responseBody = await response.json();
        console.log(responseBody);
-       window.location.href = "second.html";
+       window.location.href = "second.html"; //need to put in a if loop
     }
 }
