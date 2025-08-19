@@ -194,7 +194,7 @@ async function loginUser() {
 
 async function signupUser() {
   var username = document.getElementById('username').value;
-  var password = document.getElementById('password').value;
+  var password = document.getElementById('password1').value;
   var firstname = document.getElementById('fName').value;
   var lastname = document.getElementById('lName').value;
   var email = document.getElementById('email').value;
