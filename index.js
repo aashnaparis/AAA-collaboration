@@ -1,11 +1,13 @@
+
+
 // modal configuration
 function showMod() {
   const loginModal = document.getElementById('loginModal');
   const signupModal = document.getElementById('signupModal');
 
 
-  const logintouch = document.getElementById('logintouch');
-  const signuptouch = document.getElementById('signuptouch');
+  const logintouch = document.getElementById('loginBtn');
+  const signuptouch = document.getElementById('signupBtn');
 
   // Get the <span> elements that close the modals
   const closeButtons = document.querySelectorAll('.close');
@@ -53,7 +55,7 @@ function showModal(modalShow) {
   modalShow.style.display = 'block';
 }
 
-//fucntion for email to differentiate from who is a doctor and who is not
+//function for email to differentiate from who is a doctor and who is not
 function isGovEmail(email) {
   return /^[^@]+@[^@]+\.gov$/i.test(email);
 }
