@@ -150,12 +150,6 @@ async function getData() {
 }
 
 
-window.onload = function () {
-    // so we can know who is signed in based on username
-    const username = localStorage.getItem("username");
-    getData();
-};
-
 function classifyBloodPressure(sys, dia) {
     if (sys < 120 && dia < 80) {
         return { category: "Normal", class: "good" };

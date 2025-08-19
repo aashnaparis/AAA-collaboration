@@ -37,7 +37,6 @@ secure = db.input
 
 
 class Patient_Profile(BaseModel):
-
     id: PyObjectId | None = Field(default=None, alias="_id")
     patient_name: str
     patient_age: int
@@ -75,7 +74,7 @@ class WorkerLoginRequest(BaseModel):
 async def get_patient_profile(username: str):
     try:
         
-        user_data = await secure.find_one({"username": {"$regex": f"^{username}$", "$options": "i"}})
+        user_data = await secure.find_one({"username": username}) #makes no sense would the doctor and other usernames crash it
 
         if not user_data:
             raise HTTPException(status_code=404, detail="User not found in input database")
