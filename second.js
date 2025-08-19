@@ -307,7 +307,6 @@ async function postData(){
 
     var responseBody = await response.json();
     console.log(responseBody);
-    localStorage.setItem("patientSheetDone", "true");
 
 }
 
@@ -316,8 +315,7 @@ function backMain(){
     .getElementById("myForm")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-      localStorage.setItem("patientSheetDone", "true");
-      window.location.href = "index.html"
+      
     });
-    
+    window.location.href = "index.html"
 }

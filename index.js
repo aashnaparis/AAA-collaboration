@@ -180,26 +180,20 @@ async function loginUser() {
       console.log(responseBody);
       alert(`Welcome, ${responseBody.username}! You're logged in`);
 
-      window.onload = function () {
-        const email = localStorage.getItem("email");
-        if (isGovEmail(email)) { // thus does email look like "johndoe@halo.gov"
-          var touch = document.getElementById("button");
-          touch.href = "second.html";
-          touch.textContent = "Patient Sheet";
+      if (isGovEmail(responseBody.email)) { // thus does email look like "johndoe@halo.gov"
+        var touch = document.getElementById("button");
+        touch.href = "second.html";
+        touch.textContent = "Patient Sheet";
 
-        } else {
-          var touch = document.getElementById("button");
-          touch.href = "third.html";
-          touch.textContent = "Dashboard";
-        }
+      } else {
+        var touch = document.getElementById("button");
+        touch.href = "third.html";
+        touch.textContent = "Dashboard";
       }
-
-
     }
   } catch (err) {
     console.error("Error logging in, err");
   }
-
 }
 
 async function signupUser() {
@@ -245,14 +239,4 @@ async function signupUser() {
   }
 
 }
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  // check if patient sheet was completed or back button was pressed
-  if (localStorage.getItem("patientSheetDone") === "true") {
-    var touch = document.getElementById("button");
-    touch.href = "second.html";
-    touch.textContent = "Patient Sheet";
-  }
-});
 
