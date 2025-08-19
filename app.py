@@ -75,7 +75,7 @@ class WorkerLoginRequest(BaseModel):
 async def get_patient_profile(username: str):
     try:
 
-        user = await secure.find_one({"username": username})
+        user = await secure.find_one({"username": username}) #makes no sense would the doctor and other usernames crash it
 
         if not user:
             raise HTTPException(status_code=404, detail="User not found in input database")
