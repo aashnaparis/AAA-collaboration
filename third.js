@@ -43,7 +43,22 @@ async function getData() {
     //bmi based on weight and height (imperial)
     var bmi = (weight / (height * height)) * 7030
 
+    var status = "";
+    var comment = "good";
 
+    if (bmi < 18.5) {
+        status = "Underweight";
+        comment = "warning";
+    } else if (bmi < 25) {
+        status = "Normal";
+        comment = "good";
+    } else if (bmi < 30) {
+        status = "Overweight";
+        comment = "warning";
+    } else {
+        status = "Obese";
+        comment = "bad";
+    }
 
     //temp
     if (temp < 35) {
@@ -71,6 +86,7 @@ async function getData() {
         data: {
             labels: ["Systolic", "Diastolic"],
             datasets: [{
+                label: ["Systolic", "Diastolic"],
                 data: [bp.sys, bp.dia],
                 backgroundColor: ['#5d42f5ff', '#66bb6a']
             }]
@@ -93,8 +109,9 @@ async function getData() {
         data: {
             labels: ["Temp in Celcius"],
             datasets: [{
+                label: "Temp",
                 data: [temp],
-                backgroundColor: ['#5d42f5ff']
+                backgroundColor: ['#42f569ff']
             }]
         },
         options: {
@@ -106,20 +123,23 @@ async function getData() {
     });
 
     // for Calories
-
+    document.getElementById("calStat").innerHTML =
+        `Calorie Intake should be: ${intake}, Actual calorie intake: ${calorie}`;
     new Chart(document.getElementById("cal"), {
         type: "doughnut",
         data: {
             labels: ["Normally Consumed", "Calculated Calorie Intake"],
             datasets: [{
+                 label: "Calorie Chart",
                 data: [calorie, intake - calorie],
-                backgroundColor: ["#ff6384", "e0e0e0"]
+                backgroundColor: ["#ff6384", "#e0e0e0"]
             }]
         }
     });
 
     //for bmi
-    document.getElementById("bmiStat").innerHTML = "BMI: ${bmi} (${comment})"
+    document.getElementById("bmiStat").innerHTML =  `BMI: ${bmi} → 
+        <span class="status ${comment}">${status}</span>`;
     new Chart(document.getElementById("bmi"), {
         type: "bar",
         data: {
