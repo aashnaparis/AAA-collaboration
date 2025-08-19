@@ -1,5 +1,22 @@
+@font-face{
+  font-family: 'Merriweather';
+  src: url(fonts/Merriweather_48pt-Light.ttf);
+  font-style: normal;
+}
 
+@font-face{
+  font-family: 'Quicksand';
+ src: url(fonts/Quicksand-SemiBold.ttf );
+}
 
+body{
+  font-family: 'Merriweather';
+  font-weight: 300;
+}
+
+h1, h2, h3, h4,h5, h6{
+  font-family: 'Quicksand', ans serif;
+}
       
 .modal{
     display: none;
@@ -15,11 +32,16 @@
         }
 
 .modalContent {
-     background-color: #fefefe;
+     /*background-color: #fefefe;*/
+     background: rgba(255, 255, 255, 0.8);
+     backdrop-filter: blur(8px);
+     border-radius: 20px;
+
   margin: 15% auto; 
   padding: 20px;
   border: 1px solid #888;
   width: 80%; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .close {
@@ -37,14 +59,19 @@
 }
 
 header {
-  background-color: rgb(4, 71, 134);
+  /*background-color: rgb(4, 71, 134);*/
+  background: linear-gradient(135deg, rgb(4, 71, 134), rgb(0, 168, 204));
+  padding: 1rem;
+  box-shadow: 0 15px 15px rgba(0,0,0,0.2);
   height: 55px;
-  width: 1200px;
+  width: 97%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  position: absolute;
-   justify-content: space-between; 
+  position: fixed;
+  /*position: absolute;*/
+   justify-content: space-between;
+   border-radius: 10px; 
   
 }
 
@@ -82,6 +109,7 @@ a {
   max-height: 250px;
   display: flex;
   justify-self: flex-start;
+  border-radius: 15px;
 }
 
 .recipeRight {
@@ -93,6 +121,7 @@ padding: 5px;
   max-width: 2000px;
   max-height: 250px;
   display: flex;
+  border-radius: 15px;
   justify-self: flex-end;
   align-self: flex-start;
   
@@ -101,6 +130,12 @@ padding: 5px;
 .recipeCont{
   height: 240px;
   width: 240px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.recipeCont:hover{
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .recipes {
@@ -111,6 +146,7 @@ padding: 5px;
   flex-direction: column;
   height: 800px;
   width: 1300px;
+  
 
   justify-content: space-between;
   justify-content: space-around;
@@ -120,12 +156,18 @@ padding: 5px;
   justify-content: center;
 }
 
-#portion {
+section, #portion {
+  background: #fff;
+  border-radius: 15px;
+  margin: 20px;
  height: 500px;
   display: flex;
   justify-self: center;
+   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   
 }
+
+
 #portionText {
     display: flex;
   justify-self: center
