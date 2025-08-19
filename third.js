@@ -1,10 +1,10 @@
 
-window.onload = function() {
-  getData();
+window.onload = function () {
+    getData();
 };
 
 async function getData() {
-     // so we can know who is signed in based on username
+    // so we can know who is signed in based on username
     const username = localStorage.getItem("username");
 
     //want to do things with this info on the third page
@@ -16,6 +16,8 @@ async function getData() {
         sys: patientBody.patient_sys,
         dia: patientBody.patient_dia
     };
+
+    const result = classifyBloodPressure(bp.sys, bp.dia);
 
     const temp = patientBody.patient_temp;
     const age = patientBody.patient_age;
@@ -42,22 +44,29 @@ async function getData() {
     var status = "";
     var comment = "good";
 
-    if (bmi < 18.5) { 
-      status = "Underweight"; 
-      comment = "warning"; 
-    } else if (bmi < 25) { 
-      status = "Normal"; 
-      comment = "good"; 
-    } else if (bmi < 30) { 
-      status = "Overweight"; 
-      comment = "warning"; 
-    } else { 
-      status = "Obese"; 
-      comment = "bad"; 
+    if (bmi < 18.5) {
+        status = "Underweight";
+        comment = "warning";
+    } else if (bmi < 25) {
+        status = "Normal";
+        comment = "good";
+    } else if (bmi < 30) {
+        status = "Overweight";
+        comment = "warning";
+    } else {
+        status = "Obese";
+        comment = "bad";
     }
 
 
+
+
     // for Blood Pressure
+
+    document.getElementById("bpStat").innerHTML =
+        `Blood Pressure: ${bp.sys}/${bp.dia} mmHg → 
+   <span class="status ${result.class}">${result.category}</span>`;
+   
     new Chart(document.getElementById("bp"), {
         type: "bar",
         data: {
@@ -94,11 +103,11 @@ async function getData() {
     });
 
     // for Calories
-    new Chart(document.getElementById("cal"),{
+    new Chart(document.getElementById("cal"), {
         type: "doughnut",
         data: {
             labels: ["Normally Consumed", "Calculated Calorie Intake"],
-            datasets:[{
+            datasets: [{
                 data: [calorie, intake - calorie],
                 backgroundColor: ["#ff6384", "e0e0e0"]
             }]
@@ -107,7 +116,7 @@ async function getData() {
 
     //for bmi
     document.getElementById("bmiStat").innerHTML = "BMI: ${bmi} (${comment})"
-    new Chart(document.getElementById("bmi"),{
+    new Chart(document.getElementById("bmi"), {
         type: "bar",
         data: {
             labels: ["BMI"],
@@ -117,7 +126,7 @@ async function getData() {
                     data: [bmi],
                     backgroundColor: "gray"
                 }
-            ] 
+            ]
         },
         options: {
             indexAxis: "y",
@@ -125,7 +134,7 @@ async function getData() {
                 x: {
                     min: 10,
                     max: 40,
-                    title: {display: true, text: "BMI"}
+                    title: { display: true, text: "BMI" }
                 }
             }
         }
@@ -134,11 +143,34 @@ async function getData() {
 }
 
 
-window.onload = function() {
+window.onload = function () {
     // so we can know who is signed in based on username
     const username = localStorage.getItem("username");
-  getData();
+    getData();
 };
+
+function classifyBloodPressure(sys, dia) {
+    if (sys < 120 && dia < 80) {
+        return { category: "Normal", class: "good" };
+    }
+    else if (sys >= 120 && sys <= 129 && dia < 80) {
+        return { category: "Elevated", class: "warning" };
+    }
+    else if ((sys >= 130 && sys <= 139) || (dia >= 80 && dia <= 89)) {
+        return { category: "Hypertension Stage 1", class: "bad" };
+    }
+    else if ((sys >= 140 && sys <= 179) || (dia >= 90 && dia <= 119)) {
+        return { category: "Hypertension Stage 2", class: "bad" };
+    }
+    else if (sys >= 180 || dia >= 120) {
+        return { category: "Hypertensive Crisis 🚨", class: "critical" };
+    }
+    else {
+        return { category: "Unclassified", class: "neutral" };
+    }
+}
+
+
 
 
 
