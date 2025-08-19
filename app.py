@@ -129,22 +129,21 @@ async def securityCheck(credentials: WorkerLoginRequest):
 @app.post("/signup")
 async def clientSignUp(signup_request: SignUpData, status_code=201): 
 
-    existing_username = await secure.find_one({"username": signup_request.username})
-    existing_password = await secure.find_one({"password": signup_request.password})
+    existing = await secure.find_one({"username": signup_request.username})
+    
 
     # check if username already exists
-    if existing_username or existing_password:
+    if not existing :
         raise HTTPException(status_code=400, detail="Username already taken")
-
-
+    
+        
     # insert user if not exists
     new_user_dict = signup_request.model_dump(by_alias=True, exclude_none=True)
-    new_user_profile["password"] =  bcrypt.hash(signup_request.password)
+    new_user_dict["password"] =  bcrypt.hash(signup_request.password)
     
     created_user = await secure.insert_one(new_user_dict)
 
     new_user_profile = await secure.find_one({"_id":created_user.inserted_id})
-
 
     return{"username": signup_request.username,
         "message": "User Registration Successful"}
