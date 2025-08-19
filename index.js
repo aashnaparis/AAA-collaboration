@@ -246,3 +246,13 @@ async function signupUser() {
 
 }
 
+
+document.addEventListener("DOMContentLoaded", function() {
+  // check if patient sheet was completed or back button was pressed
+  if (localStorage.getItem("patientSheetDone") === "true") {
+    var touch = document.getElementById("button");
+    touch.href = "second.html";
+    touch.textContent = "Patient Sheet";
+  }
+});
+
