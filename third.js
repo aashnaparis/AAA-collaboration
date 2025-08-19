@@ -43,25 +43,22 @@ async function getData() {
     //bmi based on weight and height (imperial)
     var bmi = (weight / (height * height)) * 7030
 
-    var status = "";
-    var comment = "good";
 
-    if (bmi < 18.5) {
-        status = "Underweight";
-        comment = "warning";
-    } else if (bmi < 25) {
-        status = "Normal";
-        comment = "good";
-    } else if (bmi < 30) {
-        status = "Overweight";
-        comment = "warning";
-    } else {
-        status = "Obese";
-        comment = "bad";
-    }
 
     //temp
-
+    if (temp < 35) {
+        tempCategory = "Hypothermia (Too Low)";
+        tempClass = "warning";
+    } else if (temp < 37.5) {
+        tempCategory = "Normal";
+        tempClass = "good";
+    } else if (temp < 39) {
+        tempCategory = "Fever (Mild)";
+        tempClass = "warning";
+    } else {
+        tempCategory = "High Fever (Dangerous)";
+        tempClass = "bad";
+    }
 
 
     // for Blood Pressure
@@ -86,11 +83,11 @@ async function getData() {
         }
     });
 
-    //for Temperature
-    document.getElementById("tempdata").innerHTML =
-        `Temperature: ${bp.sys}/${bp.dia} mmHg → 
-   <span class="status ${result.class}">${result.category}</span>`;
-   
+    //for Temp
+    document.getElementById("tempStat").innerHTML =
+        `Temp: ${temp} °C → 
+   <span class="status ${tempClass}">${tempCategory}</span>`;
+
     new Chart(document.getElementById("temp"), {
         type: "bar",
         data: {
