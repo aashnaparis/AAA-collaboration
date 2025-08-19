@@ -148,10 +148,6 @@ async function loginUser() {
   var password = document.getElementById('login-password').value;
   var email = document.getElementById('login-email').value;
 
-  // setting a global username across pages
-  localStorage.setItem("username", username);
-  localStorage.setItem("email", email);
-
 
   var requestBody = {
     "username": username,
@@ -179,6 +175,7 @@ async function loginUser() {
       var responseBody = await response.json();
       console.log(responseBody);
       alert(`Welcome, ${responseBody.username}! You're logged in`);
+      localStorage.setItem("username", responseBody.username);
 
       if (isGovEmail(responseBody.email)) { // thus does email look like "johndoe@halo.gov"
         var touch = document.getElementById("button");
