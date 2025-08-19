@@ -309,3 +309,7 @@ async function postData(){
     console.log(responseBody);
 
 }
+
+function backMain(){
+  history.go(-2);
+}
