@@ -74,7 +74,7 @@ class WorkerLoginRequest(BaseModel):
 @app.get("/profile/{username}")
 async def get_patient_profile(username: str):
     try:
-
+        username = username.strip()
         user = await secure.find_one({"username": username}) #makes no sense would the doctor and other usernames crash it
 
         if not user:

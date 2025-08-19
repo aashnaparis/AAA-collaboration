@@ -6,6 +6,7 @@ window.onload = function () {
 async function getData() {
     // so we can know who is signed in based on username
     const username = localStorage.getItem("username");
+    console.log(username);
 
     //want to do things with this info on the third page
     var patientData = await fetch(`https://aaa-collaboration.onrender.com/profile/${username}`);
@@ -25,6 +26,7 @@ async function getData() {
     const height = patientBody.patient_height;
     const weight = patientBody.patient_weight;
 
+    const gender = patientBody.patient_gender;
     //change lbs to kg
     const kg = weight / 2.205;
 
@@ -58,15 +60,15 @@ async function getData() {
         comment = "bad";
     }
 
+    //temp
 
 
 
     // for Blood Pressure
-
     document.getElementById("bpStat").innerHTML =
         `Blood Pressure: ${bp.sys}/${bp.dia} mmHg → 
-   <span class="status ${result.class}">${result.category}</span>`;
-   
+        <span class="status ${result.class}">${result.category}</span>`;
+
     new Chart(document.getElementById("bp"), {
         type: "bar",
         data: {
@@ -85,6 +87,10 @@ async function getData() {
     });
 
     //for Temperature
+    document.getElementById("tempdata").innerHTML =
+        `Temperature: ${bp.sys}/${bp.dia} mmHg → 
+   <span class="status ${result.class}">${result.category}</span>`;
+   
     new Chart(document.getElementById("temp"), {
         type: "bar",
         data: {
@@ -103,6 +109,7 @@ async function getData() {
     });
 
     // for Calories
+
     new Chart(document.getElementById("cal"), {
         type: "doughnut",
         data: {
