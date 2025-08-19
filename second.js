@@ -311,7 +311,7 @@ async function postData(){
 }
 
 function backMain(){
-     document.getElementById('backButton').addEventListener('click', function() {
-        history.back();
-    });
+     document.getElementById("backButton").addEventListener("click", function(){
+      window.location.href = "index.html"
+     });
 }

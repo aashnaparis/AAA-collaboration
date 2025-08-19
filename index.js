@@ -92,7 +92,7 @@ function verifySignup() {
   } else if (username.value === null || username.value == "") {
     alert("Put an appropriate Username!");
     return false;
-  } else if (password.value === null || password.value == "" ) {
+  } else if (password.value === null || password.value == "") {
     alert("Put an appropriate password!");
     return false;
   } else if (password.value != check.value) {
@@ -150,6 +150,7 @@ async function loginUser() {
 
   // setting a global username across pages
   localStorage.setItem("username", username);
+  localStorage.setItem("email", email);
 
 
   var requestBody = {
@@ -179,16 +180,21 @@ async function loginUser() {
       console.log(responseBody);
       alert(`Welcome, ${responseBody.username}! You're logged in`);
 
-      if (isGovEmail(responseBody.email)){ // thus does email look like "johndoe@halo.gov"
-        var touch = document.getElementById("button");
-        touch.href = "second.html";
-        touch.textContent = "Patient Sheet";
-        
-      }else{
-        var touch = document.getElementById("button");
-        touch.href = "third.html";
-        touch.textContent = "Dashboard";
+      window.onload = function () {
+        const email = localStorage.getItem("email");
+        if (isGovEmail(email)) { // thus does email look like "johndoe@halo.gov"
+          var touch = document.getElementById("button");
+          touch.href = "second.html";
+          touch.textContent = "Patient Sheet";
+
+        } else {
+          var touch = document.getElementById("button");
+          touch.href = "third.html";
+          touch.textContent = "Dashboard";
+        }
       }
+
+
     }
   } catch (err) {
     console.error("Error logging in, err");
