@@ -10,14 +10,11 @@ from datetime import date, datetime
 from dotenv import load_dotenv
 import os 
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import Depends   #use this delay running our security endpoint to ensure its actually a doctor gaining access
 from passlib.hash import bcrypt
 
 load_dotenv()
 app = FastAPI()
 
-worker_username = "work1work2work3r"
-worker_password = "health-hub-secure"
 
 origins = ["http://localhost:5500", "http://127.0.0.1:5500"] 
 #is render part of origin?
@@ -34,11 +31,13 @@ PyObjectId = Annotated[str, BeforeValidator(str)]
 connection = motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGODB_URL"))
 db = connection.patient
 info = db.data
+secure = db.input
 
 
 
 
 class Patient_Profile(BaseModel):
+
     id: PyObjectId | None = Field(default=None, alias="_id")
     patient_name: str
     patient_age: int
@@ -58,9 +57,6 @@ class Patient_Profile(BaseModel):
 class Patient_Profile_Collection(BaseModel):
     profile_patient: List[Patient_Profile]
 
-class WorkerLoginRequest(BaseModel):
-    username: str
-    password: str
 
 class SignUpData(BaseModel):
     firstname: str
@@ -68,7 +64,12 @@ class SignUpData(BaseModel):
     username: str
     password: str
     email: str
-    typeOfUser: str
+    
+class WorkerLoginRequest(BaseModel):
+    username: str
+    password: str
+    email: str
+
 
 @app.get("/profile")
 async def get_patient_profile():
@@ -111,29 +112,40 @@ async def create_patient_profile(profile_request: Patient_Profile):
     updated_profile_json = jsonable_encoder(patient_new_profile)
     return JSONResponse(updated_profile_json, status_code = 201)
 
-@app.post("/secureLogin")
+@app.post("/login", status_code=201)
 async def securityCheck(credentials: WorkerLoginRequest):
-    if credentials.username == worker_username and credentials.password == worker_password:
-        return {
-            "status": "Success",
-            "message": "Login was succesful"
-        }
+
+    # check if the person logging in sign up first
+    existing = await secure.find_one({"username": credentials.username})
+
+    if not existing:
+        raise HTTPException(status_code=404, detail="Invalid username and/or password")
+    if bcrypt.verify(credentials.password, existing["password"]):
+        return {"status": "Success", "message": "Login successful"}
     else:
-        raise HTTPException(status_code=401, detail="Invalid username and/or password")
+        raise HTTPException(status_code=404, detail="Invalid username or password")
 
-@app.post("/signUp")
-async def clientSignUp(signup_request: SignUpData):
-    password = bcrypt.hash(signup_request.password);
 
-    #database insertion 
-    await db.users.insert_one({
-        "firstname": signup_request.firstname,
-        "lastname": signup_request.lastname,
-        "username": signup_request.username,
-        "pasword": password,
-        "email": signup_request.email,
-        "typeOfUser": signup_request.typeOfUser
-    })
+@app.post("/signup")
+async def clientSignUp(signup_request: SignUpData, status_code=201): 
+
+    existing_username = await secure.find_one({"username": signup_request.username})
+    existing_password = await secure.find_one({"password": signup_request.password})
+
+    # check if username already exists
+    if existing_username or existing_password:
+        raise HTTPException(status_code=400, detail="Username already taken")
+
+
+    # insert user if not exists
+    new_user_dict = signup_request.model_dump(by_alias=True, exclude_none=True)
+    new_user_profile["password"] =  bcrypt.hash(signup_request.password)
+    
+    created_user = await secure.insert_one(new_user_dict)
+
+    new_user_profile = await secure.find_one({"_id":created_user.inserted_id})
+
 
     return{"username": signup_request.username,
         "message": "User Registration Successful"}
+

@@ -73,16 +73,16 @@ function validateItems() {
     alert("Put diastolic blood pressure in");
     return false;
   } else if (
-    systolic.value <= 70 ||
-    systolic.value >= 200 ||
+    systolic.value <= 75 ||
+    systolic.value >= 120 ||
     systolic.value === null ||
     isNaN(systolic.value)
   ) {
     alert("Put systolic blood pressure in");
     return false;
   } else if (
-    height.value <= 54 ||
-    height.value >= 250 ||
+    height.value <= 120 ||
+    height.value >= 180 ||
     height.value === null ||
     isNaN(height.value)
   ) {
@@ -105,7 +105,7 @@ function validateItems() {
     return false;
   } else if (
     temp.value <= 34 ||
-    temp.value >= 43 ||
+    temp.value >= 40 ||
     temp.value === null ||
     isNaN(temp.value)
   ) {
