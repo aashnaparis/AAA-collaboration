@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field
 from fastapi.responses import JSONResponse 
@@ -71,18 +71,28 @@ class WorkerLoginRequest(BaseModel):
     email: str
 
 
-@app.get("/profile")
-async def get_patient_profile():
+@app.get("/profile/{username}")
+async def get_patient_profile(username: str):
     try:
-        profiles = await info.find().to_list(100)
 
-        if not profiles:
-            raise HTTPException(404, "No profiles found")
+        user = await secure.find_one({"username": username})
 
-        for profile in profiles:
-            profile["_id"] = str(profile["_id"])  # Convert ObjectId to string
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found in input database")
 
-        return Patient_Profile_Collection(profile_patient=profiles)
+        firstname = user.get("firstname")
+        if not firstname:
+            raise HTTPException(status_code=404, detail="Firstname not found for user")
+
+        
+        profile = await info.find_one({"patient_name": firstname})
+        if not profile:
+            raise HTTPException(status_code=404, detail="No patient profile matches this user")
+
+        
+        profile["_id"] = str(profile["_id"])
+
+        return Patient_Profile(**profile)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
