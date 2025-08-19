@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field
 from fastapi.responses import JSONResponse 
@@ -71,18 +71,28 @@ class WorkerLoginRequest(BaseModel):
     email: str
 
 
-@app.get("/profile")
-async def get_patient_profile():
+@app.get("/profile/{username}")
+async def get_patient_profile(username: str):
     try:
-        profiles = await info.find().to_list(100)
 
-        if not profiles:
-            raise HTTPException(404, "No profiles found")
+        user = await secure.find_one({"username": username})
 
-        for profile in profiles:
-            profile["_id"] = str(profile["_id"])  # Convert ObjectId to string
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found in input database")
 
-        return Patient_Profile_Collection(profile_patient=profiles)
+        firstname = user.get("firstname")
+        if not firstname:
+            raise HTTPException(status_code=404, detail="Firstname not found for user")
+
+        
+        profile = await info.find_one({"patient_name": firstname})
+        if not profile:
+            raise HTTPException(status_code=404, detail="No patient profile matches this user")
+
+        
+        profile["_id"] = str(profile["_id"])
+
+        return Patient_Profile(**profile)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -121,7 +131,7 @@ async def securityCheck(credentials: WorkerLoginRequest):
     if not existing:
         raise HTTPException(status_code=404, detail="Invalid username and/or password")
     if bcrypt.verify(credentials.password, existing["password"]):
-        return {"status": "Success", "message": "Login successful"}
+        return {"username": existing["username"], "email": existing["email"]}
     else:
         raise HTTPException(status_code=404, detail="Invalid username or password")
 
@@ -129,21 +139,19 @@ async def securityCheck(credentials: WorkerLoginRequest):
 @app.post("/signup")
 async def clientSignUp(signup_request: SignUpData, status_code=201): 
 
-    existing_username = await secure.find_one({"username": signup_request.username})
-    existing_password = await secure.find_one({"password": signup_request.password})
+    existing = await secure.find_one({"username": signup_request.username})
+    
 
     # check if username already exists
-    if existing_username or existing_password:
+    if existing :
         raise HTTPException(status_code=400, detail="Username already taken")
-
-
+    
+        
     # insert user if not exists
     new_user_dict = signup_request.model_dump(by_alias=True, exclude_none=True)
-    new_user_profile["password"] =  bcrypt.hash(signup_request.password)
+    new_user_dict["password"] =  bcrypt.hash(signup_request.password)
     
     created_user = await secure.insert_one(new_user_dict)
-
-    new_user_profile = await secure.find_one({"_id":created_user.inserted_id})
 
 
     return{"username": signup_request.username,

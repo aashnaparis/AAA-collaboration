@@ -148,6 +148,10 @@ async function loginUser() {
   var password = document.getElementById('login-password').value;
   var email = document.getElementById('login-email').value;
 
+  // setting a global username across pages
+  localStorage.setItem("username", username);
+
+
   var requestBody = {
     "username": username,
     "password": password,
@@ -175,7 +179,7 @@ async function loginUser() {
       console.log(responseBody);
       alert(`Welcome, ${responseBody.username}! You're logged in`);
 
-      if (isGovEmail(responseBody.email)){ // thus does email look like "johndoe@health.gov"
+      if (isGovEmail(responseBody.email)){ // thus does email look like "johndoe@halo.gov"
         var touch = document.getElementById("button");
         touch.href = "second.html";
         touch.textContent = "Patient Sheet";
@@ -193,19 +197,19 @@ async function loginUser() {
 }
 
 async function signupUser() {
-  var username = document.getElementById('username').value;
-  var password = document.getElementById('password').value;
-  var firstname = document.getElementById('fName').value;
-  var lastname = document.getElementById('lName').value;
-  var email = document.getElementById('email').value;
+  var username = document.getElementById('username');
+  var password = document.getElementById('password1');
+  var firstname = document.getElementById('fName');
+  var lastname = document.getElementById('lName');
+  var email = document.getElementById('email');
 
 
   var requestBody = {
-    "firstname": firstname,
-    "lastname": lastname,
-    "username": username,
-    "password": password,
-    "email": email,
+    "firstname": firstname.value,
+    "lastname": lastname.value,
+    "username": username.value,
+    "password": password.value,
+    "email": email.value,
   };
 
   var settings = {
