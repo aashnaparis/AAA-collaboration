@@ -121,7 +121,7 @@ async def securityCheck(credentials: WorkerLoginRequest):
     if not existing:
         raise HTTPException(status_code=404, detail="Invalid username and/or password")
     if bcrypt.verify(credentials.password, existing["password"]):
-        return {"status": "Success", "message": "Login successful"}
+        return {"username": existing["username"], "email": existing["email"]}
     else:
         raise HTTPException(status_code=404, detail="Invalid username or password")
 
@@ -142,6 +142,7 @@ async def clientSignUp(signup_request: SignUpData, status_code=201):
     new_user_dict["password"] =  bcrypt.hash(signup_request.password)
     
     created_user = await secure.insert_one(new_user_dict)
+
 
     return{"username": signup_request.username,
         "message": "User Registration Successful"}

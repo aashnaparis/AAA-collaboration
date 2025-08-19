@@ -173,9 +173,9 @@ async function loginUser() {
     else {
       var responseBody = await response.json();
       console.log(responseBody);
-      alert(`Welcome, ${responseBody.username}! You're logged in`);
+      alert("Welcome, ${responseBody.username}! You're logged in");
 
-      if (isGovEmail(responseBody.email)){ // thus does email look like "johndoe@health.gov"
+      if (isGovEmail(responseBody.email)){ // thus does email look like "johndoe@halo.gov"
         var touch = document.getElementById("button");
         touch.href = "second.html";
         touch.textContent = "Patient Sheet";
