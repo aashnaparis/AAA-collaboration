@@ -92,7 +92,7 @@ function verifySignup() {
   } else if (username.value === null || username.value == "") {
     alert("Put an appropriate Username!");
     return false;
-  } else if (password.value === null || password.value == "" ) {
+  } else if (password.value === null || password.value == "") {
     alert("Put an appropriate password!");
     return false;
   } else if (password.value != check.value) {
@@ -148,6 +148,7 @@ async function loginUser() {
   var password = document.getElementById('login-password').value;
   var email = document.getElementById('login-email').value;
 
+
   var requestBody = {
     "username": username,
     "password": password,
@@ -174,13 +175,14 @@ async function loginUser() {
       var responseBody = await response.json();
       console.log(responseBody);
       alert(`Welcome, ${responseBody.username}! You're logged in`);
+      localStorage.setItem("username", responseBody.username);
 
-      if (isGovEmail(responseBody.email)){ // thus does email look like "johndoe@health.gov"
+      if (isGovEmail(responseBody.email)) { // thus does email look like "johndoe@halo.gov"
         var touch = document.getElementById("button");
         touch.href = "second.html";
         touch.textContent = "Patient Sheet";
-        
-      }else{
+
+      } else {
         var touch = document.getElementById("button");
         touch.href = "third.html";
         touch.textContent = "Dashboard";
@@ -189,23 +191,22 @@ async function loginUser() {
   } catch (err) {
     console.error("Error logging in, err");
   }
-
 }
 
 async function signupUser() {
-  var username = document.getElementById('username').value;
-  var password = document.getElementById('password').value;
-  var firstname = document.getElementById('fName').value;
-  var lastname = document.getElementById('lName').value;
-  var email = document.getElementById('email').value;
+  var username = document.getElementById('username');
+  var password = document.getElementById('password1');
+  var firstname = document.getElementById('fName');
+  var lastname = document.getElementById('lName');
+  var email = document.getElementById('email');
 
 
   var requestBody = {
-    "firstname": firstname,
-    "lastname": lastname,
-    "username": username,
-    "password": password,
-    "email": email,
+    "firstname": firstname.value,
+    "lastname": lastname.value,
+    "username": username.value,
+    "password": password.value,
+    "email": email.value,
   };
 
   var settings = {

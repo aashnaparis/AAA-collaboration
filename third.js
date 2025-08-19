@@ -1,7 +1,15 @@
 
+window.onload = function () {
+    getData();
+};
+
 async function getData() {
+    // so we can know who is signed in based on username
+    const username = localStorage.getItem("username");
+    console.log(username);
+
     //want to do things with this info on the third page
-    var patientData = await fetch("https://aaa-collaboration.onrender.com/profile");
+    var patientData = await fetch(`https://aaa-collaboration-nij9.onrender.com/${username}`);
     var patientBody = await patientData.json();
     console.log(patientBody);
 
@@ -10,12 +18,15 @@ async function getData() {
         dia: patientBody.patient_dia
     };
 
+    const result = classifyBloodPressure(bp.sys, bp.dia);
+
     const temp = patientBody.patient_temp;
     const age = patientBody.patient_age;
 
     const height = patientBody.patient_height;
     const weight = patientBody.patient_weight;
 
+    const gender = patientBody.patient_gender;
     //change lbs to kg
     const kg = weight / 2.205;
 
@@ -35,27 +46,47 @@ async function getData() {
     var status = "";
     var comment = "good";
 
-    if (bmi < 18.5) { 
-      status = "Underweight"; 
-      comment = "warning"; 
-    } else if (bmi < 25) { 
-      status = "Normal"; 
-      comment = "good"; 
-    } else if (bmi < 30) { 
-      status = "Overweight"; 
-      comment = "warning"; 
-    } else { 
-      status = "Obese"; 
-      comment = "bad"; 
+    if (bmi < 18.5) {
+        status = "Underweight";
+        comment = "warning";
+    } else if (bmi < 25) {
+        status = "Normal";
+        comment = "good";
+    } else if (bmi < 30) {
+        status = "Overweight";
+        comment = "warning";
+    } else {
+        status = "Obese";
+        comment = "bad";
+    }
+
+    //temp
+    if (temp < 35) {
+        tempCategory = "Hypothermia (Too Low)";
+        tempClass = "warning";
+    } else if (temp < 37.5) {
+        tempCategory = "Normal";
+        tempClass = "good";
+    } else if (temp < 39) {
+        tempCategory = "Fever (Mild)";
+        tempClass = "warning";
+    } else {
+        tempCategory = "High Fever (Dangerous)";
+        tempClass = "bad";
     }
 
 
     // for Blood Pressure
+    document.getElementById("bpStat").innerHTML =
+        `Blood Pressure: ${bp.sys}/${bp.dia} mmHg → 
+        <span class="status ${result.class}">${result.category}</span>`;
+
     new Chart(document.getElementById("bp"), {
         type: "bar",
         data: {
             labels: ["Systolic", "Diastolic"],
             datasets: [{
+                label: ["Systolic", "Diastolic"],
                 data: [bp.sys, bp.dia],
                 backgroundColor: ['#5d42f5ff', '#66bb6a']
             }]
@@ -68,14 +99,19 @@ async function getData() {
         }
     });
 
-    //for Temperature
+    //for Temp
+    document.getElementById("tempStat").innerHTML =
+        `Temp: ${temp} °C → 
+   <span class="status ${tempClass}">${tempCategory}</span>`;
+
     new Chart(document.getElementById("temp"), {
         type: "bar",
         data: {
-            labels: [Temp in Celcius],
+            labels: ["Temp in Celcius"],
             datasets: [{
+                label: "Temp",
                 data: [temp],
-                backgroundColor: ['#5d42f5ff']
+                backgroundColor: ['#42f569ff']
             }]
         },
         options: {
@@ -87,20 +123,24 @@ async function getData() {
     });
 
     // for Calories
-    new Chart(document.getElementById("cal"),{
+    document.getElementById("calStat").innerHTML =
+        `Calorie Intake should be: ${intake}, Actual calorie intake: ${calorie}`;
+    new Chart(document.getElementById("cal"), {
         type: "doughnut",
         data: {
             labels: ["Normally Consumed", "Calculated Calorie Intake"],
-            datasets:[{
+            datasets: [{
+                 label: "Calorie Chart",
                 data: [calorie, intake - calorie],
-                backgroundColor: ["#ff6384", "e0e0e0"]
+                backgroundColor: ["#ff6384", "#e0e0e0"]
             }]
         }
     });
 
     //for bmi
-    document.getElementById("bmiStat").innerHTML = "BMI: ${bmi} (${comment})"
-    new Chart(document.getElementById("bmi"),{
+    document.getElementById("bmiStat").innerHTML =  `BMI: ${bmi} → 
+        <span class="status ${comment}">${status}</span>`;
+    new Chart(document.getElementById("bmi"), {
         type: "bar",
         data: {
             labels: ["BMI"],
@@ -110,7 +150,7 @@ async function getData() {
                     data: [bmi],
                     backgroundColor: "gray"
                 }
-            ] 
+            ]
         },
         options: {
             indexAxis: "y",
@@ -118,12 +158,38 @@ async function getData() {
                 x: {
                     min: 10,
                     max: 40,
-                    title: {display: true, text: "BMI"}
+                    title: { display: true, text: "BMI" }
                 }
             }
         }
     });
 
 }
+
+
+function classifyBloodPressure(sys, dia) {
+    if (sys < 120 && dia < 80) {
+        return { category: "Normal", class: "good" };
+    }
+    else if (sys >= 120 && sys <= 129 && dia < 80) {
+        return { category: "Elevated", class: "warning" };
+    }
+    else if ((sys >= 130 && sys <= 139) || (dia >= 80 && dia <= 89)) {
+        return { category: "Hypertension Stage 1", class: "bad" };
+    }
+    else if ((sys >= 140 && sys <= 179) || (dia >= 90 && dia <= 119)) {
+        return { category: "Hypertension Stage 2", class: "bad" };
+    }
+    else if (sys >= 180 || dia >= 120) {
+        return { category: "Hypertensive Crisis 🚨", class: "critical" };
+    }
+    else {
+        return { category: "Unclassified", class: "neutral" };
+    }
+}
+
+
+
+
 
 
