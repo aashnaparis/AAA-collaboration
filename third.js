@@ -1,7 +1,12 @@
-// so we can know who is signed in based on username
-const username = localStorage.getItem("username");
+
+window.onload = function() {
+  getData();
+};
 
 async function getData() {
+     // so we can know who is signed in based on username
+    const username = localStorage.getItem("username");
+
     //want to do things with this info on the third page
     var patientData = await fetch(`https://aaa-collaboration.onrender.com/profile/${username}`);
     var patientBody = await patientData.json();
@@ -130,6 +135,8 @@ async function getData() {
 
 
 window.onload = function() {
+    // so we can know who is signed in based on username
+    const username = localStorage.getItem("username");
   getData();
 };
 
