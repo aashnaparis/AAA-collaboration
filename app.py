@@ -72,7 +72,7 @@ class WorkerLoginRequest(BaseModel):
 
 
 @app.get("/{username}")
-async def get_patient_profile(username: str):
+async def get_patient_profile():
     try:
         
         user_data = await secure.find_one({"username": "jademouse"}) #makes no sense would the doctor and other usernames crash it
