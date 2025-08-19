@@ -74,7 +74,7 @@ async function getData() {
     new Chart(document.getElementById("temp"), {
         type: "bar",
         data: {
-            labels: [Temp in Celcius],
+            labels: ["Temp in Celcius"],
             datasets: [{
                 data: [temp],
                 backgroundColor: ['#5d42f5ff']
