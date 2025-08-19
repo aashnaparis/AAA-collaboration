@@ -193,19 +193,19 @@ async function loginUser() {
 }
 
 async function signupUser() {
-  var username = document.getElementById('username').value;
-  var password = document.getElementById('password1').value;
-  var firstname = document.getElementById('fName').value;
-  var lastname = document.getElementById('lName').value;
-  var email = document.getElementById('email').value;
+  var username = document.getElementById('username');
+  var password = document.getElementById('password1');
+  var firstname = document.getElementById('fName');
+  var lastname = document.getElementById('lName');
+  var email = document.getElementById('email');
 
 
   var requestBody = {
-    "firstname": firstname,
-    "lastname": lastname,
-    "username": username,
-    "password": password,
-    "email": email,
+    "firstname": firstname.value,
+    "lastname": lastname.value,
+    "username": username.value,
+    "password": password.value,
+    "email": email.value,
   };
 
   var settings = {
