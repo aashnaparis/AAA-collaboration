@@ -133,7 +133,7 @@ async def clientSignUp(signup_request: SignUpData, status_code=201):
     
 
     # check if username already exists
-    if not existing :
+    if existing :
         raise HTTPException(status_code=400, detail="Username already taken")
     
         
@@ -142,8 +142,6 @@ async def clientSignUp(signup_request: SignUpData, status_code=201):
     new_user_dict["password"] =  bcrypt.hash(signup_request.password)
     
     created_user = await secure.insert_one(new_user_dict)
-
-    new_user_profile = await secure.find_one({"_id":created_user.inserted_id})
 
     return{"username": signup_request.username,
         "message": "User Registration Successful"}
