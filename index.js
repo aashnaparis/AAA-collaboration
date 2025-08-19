@@ -1,24 +1,26 @@
+
+
 // modal configuration
 function showMod() {
   const loginModal = document.getElementById('loginModal');
   const signupModal = document.getElementById('signupModal');
 
 
-  const loginBtn = document.getElementById('loginBtn');
-  const signupBtn = document.getElementById('signupBtn');
+  const logintouch = document.getElementById('loginBtn');
+  const signuptouch = document.getElementById('signupBtn');
 
   // Get the <span> elements that close the modals
   const closeButtons = document.querySelectorAll('.close');
 
-  if (loginBtn) {
-    loginBtn.onclick = function () {
+  if (logintouch) {
+    logintouch.onclick = function () {
       loginModal.style.display = 'block';
     }
   }
 
 
-  if (signupBtn) {
-    signupBtn.onclick = function () {
+  if (signuptouch) {
+    signuptouch.onclick = function () {
       signupModal.style.display = 'block';
     }
   }
@@ -51,6 +53,11 @@ function showModal(modalShow) {
   signupModal.style.display = 'none';
 
   modalShow.style.display = 'block';
+}
+
+//function for email to differentiate from who is a doctor and who is not
+function isGovEmail(email) {
+  return /^[^@]+@[^@]+\.gov$/i.test(email);
 }
 
 //for email validation
@@ -166,8 +173,18 @@ async function loginUser() {
     else {
       var responseBody = await response.json();
       console.log(responseBody);
-      alert(`Welcome, ${responseBody.username}!`);
-      window.location.href = "index.html"; // should put in get
+      alert(`Welcome, ${responseBody.username}! You're logged in`);
+
+      if (isGovEmail(responseBody.email)){ // thus does email look like "johndoe@health.gov"
+        var touch = document.getElementById("button");
+        touch.href = "second.html";
+        touch.textContent = "Patient Sheet";
+        
+      }else{
+        var touch = document.getElementById("button");
+        touch.href = "third.html";
+        touch.textContent = "Dashboard";
+      }
     }
   } catch (err) {
     console.error("Error logging in, err");
@@ -209,9 +226,8 @@ async function signupUser() {
     else {
       var responseBody = await response.json();
       console.log(responseBody);
-      alert(`Welcome, ${responseBody.username}!`);
+      alert(`Welcome, ${responseBody.username}!, Login in to see your Dashboard`);
       window.location.href = "index.html";
-      // window.location.href = "second.html";  // wrong page
     }
   }
   catch (err) {
