@@ -81,11 +81,16 @@ async def get_patient_profile(username: str):
             raise HTTPException(status_code=404, detail="User not found in input database")
 
         firstname = user.get("firstname")
+        lastname = user.get("lastname")
         if not firstname:
             raise HTTPException(status_code=404, detail="Firstname not found for user")
+        if not lastname:
+            raise HTTPException(status_code=404, detail="Lastname not found for user")
+        
+        result_name = f"{firstname.strip()} {lastname.strip()}"
 
         
-        profile = await info.find_one({"patient_name": firstname})
+        profile = await info.find_one({"patient_name": result_name})
         if not profile:
             raise HTTPException(status_code=404, detail="No patient profile matches this user")
 
