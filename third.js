@@ -9,7 +9,7 @@ async function getData() {
     console.log(username);
 
     //want to do things with this info on the third page
-    var patientData = await fetch(`https://aaa-collaboration.onrender.com/profile/${username}`);
+    var patientData = await fetch(`https://aaa-collaboration.onrender.com/${username}`);
     var patientBody = await patientData.json();
     console.log(patientBody);
 

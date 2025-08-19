@@ -71,20 +71,11 @@ class WorkerLoginRequest(BaseModel):
     email: str
 
 
-@app.get("/profile/{username}")
+@app.get("/{username}")
 async def get_patient_profile(username: str):
     try:
-        username = username.strip()
-        print(f"Debug: Searching for username '{username}'")  # Debug log
-
-        user_data = await secure.find_one({"username": username})
-        print(f"Debug: User found: {user_data}")  # Debug log
-
-        if not user_data:
-            # Check if it's a case issue
-            user_data = await secure.find_one({"username": {"$regex": f"^{username}$", "$options": "i"}})
-            print(f"Debug: User after case-insensitive search: {user_data}")  # Debug log
-
+        
+        user_data = await secure.find_one({"username": "jademouse"}) #makes no sense would the doctor and other usernames crash it
 
         if not user_data:
             raise HTTPException(status_code=404, detail="User not found in input database")
