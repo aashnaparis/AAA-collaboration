@@ -200,14 +200,14 @@ a {
 .recipeLeft {
   background-color: rgb(29, 99, 164);
   padding: 5px;
-  gap:25px;
-  margin: 40px;
+  gap:15px;
   width: 240px;
   height: 240px;
   max-width: 2000px;
   max-height: 250px;
-  display: flex;
-  justify-self: flex-start;
+  /*display: flex;*/
+  /*justify-self: auto;
+  align-self: auto;*/
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -215,16 +215,15 @@ a {
 .recipeRight {
   background-color: rgb(29, 99, 164);
   padding: 5px;
-  gap: 25px;
-  margin: 40px;
+  gap: 15px;
   width: 240px;
   height: 240px;
   max-width: 2000px;
   max-height: 250px;
-  display: flex;
+  /*display: flex;*/
   border-radius: 15px;
-  justify-self: flex-end;
-  align-self: flex-start;
+  /*justify-self: flex-end;
+  align-self: flex-start;*/
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   
 }
@@ -232,32 +231,43 @@ a {
 .recipeCont{
   height: 240px;
   width: 240px;
+  object-fit: cover;
   border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .recipeCont:hover{
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
-
-.recipes {
-  background-color: rgb(184, 179, 179);
- 
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  height: 800px;
-  width: 1300px;
-  
-
-  justify-content: space-between;
-  justify-content: space-around;
-  align-self: center;
-  justify-self: center;
-  align-content: center;
-  justify-content: center;
+.recipe-tag{
+  text-align: center;
 }
-
+.recipes {
+  background-color:  rgb(78, 182, 205);
+  border-radius: 20px;
+  align-items: center;
+  gap: 20px;
+  display: flex; 
+  flex-direction: column;
+  height: 650px;
+  width: 1300px;
+  padding: 20px;
+  margin: 20px auto;
+}
+.recipe-grid{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  justify-items: center;
+  width: 100%;
+}
+.recipes h2{
+  text-align: center;
+  font-size: 2.2rem;
+  color: #044786;
+  margin:0;
+}
 #portion {
   background: #fff;
   border-radius: 15px;
@@ -268,6 +278,21 @@ a {
   justify-self: center;
    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   
+}
+.two-columns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  margin: 40px 0;
+}
+.two-columns img{
+  width:100%;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.left-column h2{
+  margin-bottom: 10px;
 }
 section{
   background: #fff;
