@@ -12,30 +12,46 @@
 <body>
   <header id="homepage-header">
     <div class="navBox">
-      <ul class="navBar">
-        <li><button id="loginBtn" onclick="showMod()">Login</button></li>
+      <div class="navBar">
 
-        <li><button id="signupBtn" onclick="showMod()">Sign-Up</button></li>
+        <div class="navBarLeft">
 
-        <li class="navCont"><a href="recipesnacks.html">Nutritious Snacks</a></li>
+            <li>
+                <button id="loginBtn" onclick="showMod()">LOGIN</button>
+            </li>
 
-        <li class="navCont"><a href="recipemeals.html">Healthy Dinner Ideas</a></li>
+            <li>
+                <button id="signupBtn" onclick="showMod()">SIGN UP</button>
+            </li>
+        </div>
 
-        <li class="navCont"><a href="" id="button"></a></li>
+        <div class="navBarCenter">
+            <li>
+                <h1>
+                    Halo Health Hub
+                </h1>
+            </li>
+            <li>
+                <img id="halo" src="images/1000_F_317420591_QGKuwskRQKp9djJIGlklnVWnRjFy04eG-removebg-preview.png" alt="">
+            </li>
+        </div>
 
-        <li><h1>
-            Halo Health Hub
-        </h1></li>
-        <li><img id="halo" src="images/1000_F_317420591_QGKuwskRQKp9djJIGlklnVWnRjFy04eG-removebg-preview.png" alt=""></li>
-      </ul>
+        <div class="navBarRight">
+            <li class="navCont">
+                <a href="recipesnacks.html">Nutritious Snacks</a>
+            </li>
+            <li class="navCont">
+                <a href="recipemeals.html">Healthy Dinner Ideas</a>
+            </li>
+        </div>
+      </div>
     </div>
   </header>
   <br><br><br><br>
 
   <h3>For Doctors and Patients Alike</h3>
   <hr>
-  <h2>Recipes</h2>
-  <p>Your diet is a major determinant in your overall health. See below some popular, delicious and nourishing recipes
+  <p class="recipe-tag">Your diet is a major determinant in your overall health. See below some popular, delicious and nourishing recipes
     to keep you in good health or choose from a greater selection using the navigation bar.</p>
 
   <!-- The modal sign-up page -->
@@ -112,124 +128,140 @@
   <!-- Recipes yum yum -->
   <!-- Divs scroll with recipe options -->
   <div class="recipes">
-    <div class="recipeLeft">
-      <a href="https://www.heartfoundation.org.nz/wellbeing/healthy-recipes/chickpea-salad-wrap"><img
-          src="../images/chickpea-wrap.jpg" alt="" class="recipeCont" data-aos="fade-left">
-    </div> </a>
+    <h2>Recipes</h2>
+    <div class="recipe-grid">
+        <div class="recipeLeft">
+            <a href="https://www.heartfoundation.org.nz/wellbeing/healthy-recipes/chickpea-salad-wrap"><img
+          src="../images/chickpea-wrap.jpg" alt="" class="recipeCont">
+            </a>
+        </div>
 
+        <div class="recipeLeft">
+            <a href="https://www.eatingwell.com/chicken-cabbage-bowls-with-sesame-dressing-8374684"><img
+          src="../images/chicken-cabbage-bowl-square.jpg" alt="" class="recipeCont">
+            </a>
+        </div>
 
-    <div class="recipeLeft">
-      <a href="https://www.eatingwell.com/chicken-cabbage-bowls-with-sesame-dressing-8374684"><img
-          src="../images/chicken-cabbage-bowl-square.jpg" alt="" class="recipeCont"></a>
+        <div class="recipeLeft">
+            <a href="https://www.eatingwell.com/recipe/7966052/air-fryer-spaghetti-squash/"> <img
+          src="../images/spaghetti-squash.webp" alt="" class="recipeCont">
+        
+            </a>
+        </div>
 
+        <div class="recipeLeft">
+            <a href="https://www.bbcgoodfood.com/recipes/indian-chickpeas-poached-eggs"> <img
+          src="../images/indian-chickpeas.webp" alt="" class="recipeCont">
+            </a>
+        </div>
+
+        <div class="recipeRight">
+            <a href="https://www.heartfoundation.org.au/recipes/grilled-chicken-and-pineapple-turkish-melts"><img
+          src="../images/Grilled-chicken-and-pineapple-Turkish-melts.webp" alt="" class="recipeCont">
+            </a>
+        </div>
+
+        <div class="recipeRight">
+            <a href="https://www.heartfoundation.org.au/recipes/grilled-pork-cutlet-with-grilled-pineapple-salsa"> <img
+          src="../images/grilled-pork-cutlet-with-grilled-pineapple-salsa.webp" alt="" class="recipeCont">
+            </a>
+        </div>
+
+        <div class="recipeRight">
+            <a href="https://www.bbcgoodfood.com/recipes/prawn-curry-hurry"> <img src="../images/prawn-curry.webp" alt=""
+          class="recipeCont">
+            </a>
+        </div>
+
+        <div class="recipeRight">
+            <a href="https://www.bbcgoodfood.com/recipes/spicy-chicken-avocado-wraps"> <img
+          src="../images/spicy-chicken-avocado-wrap.webp" alt="" class="recipeCont">
+            </a>
+        </div>
     </div>
-
-    <div class="recipeLeft">
-      <a href="https://www.eatingwell.com/recipe/7966052/air-fryer-spaghetti-squash/"> <img
-          src="../images/spaghetti-squash.webp" alt="" class="recipeCont"></a>
-
-    </div>
-
-    <div class="recipeLeft">
-      <a href="https://www.bbcgoodfood.com/recipes/indian-chickpeas-poached-eggs"> <img
-          src="../images/indian-chickpeas.webp" alt="" class="recipeCont"></a>
-
-    </div>
-
-
-
-
-
-    <div class="recipeRight">
-      <a href="https://www.heartfoundation.org.au/recipes/grilled-chicken-and-pineapple-turkish-melts"> <img
-          src="../images/Grilled-chicken-and-pineapple-Turkish-melts.webp" alt="" class="recipeCont"></a>
-
-    </div>
-
-    <div class="recipeRight">
-      <a href="https://www.heartfoundation.org.au/recipes/grilled-pork-cutlet-with-grilled-pineapple-salsa"> <img
-          src="../images/grilled-pork-cutlet-with-grilled-pineapple-salsa.webp" alt="" class="recipeCont"></a>
-
-    </div>
-
-    <div class="recipeRight">
-      <a href="https://www.bbcgoodfood.com/recipes/prawn-curry-hurry"> <img src="../images/prawn-curry.webp" alt=""
-          class="recipeCont"></a>
-
-    </div>
-
-    <div class="recipeRight">
-      <a href="https://www.bbcgoodfood.com/recipes/spicy-chicken-avocado-wraps"> <img
-          src="../images/spicy-chicken-avocado-wrap.webp" alt="" class="recipeCont"></a>
-
-    </div>
-
   </div>
   <br>
   <div>
-    <h2>Portion Control</h2>
-    <img id="portion" src="../images/portion.jpg" alt="portion size guide">
-    <br>
-    <p id="portionText">Doctors recommend adjusting your serving sizes to match the above</p>
-  </div>
+        <h2 class="portion-header">Portion Control</h2>
+        <section class="two-columns">
+        
+            <div class="left-column">
+                <img id="portion" src="../images/portion.jpg" alt="portion size guide">
+            </div>
+            <div class="right-column"> 
+                <p id="portionText"> Doctors recommend adjusting your serving sizes with those shown on the left</p>
+            </div>
+        </section>
+    </div>
   <hr>
-  <section>
-    <h2>Simple Exercises You Can Do Each Day</h2>
-    <h5>*It is always best to consult your primary care doctor regarding which exercises are suitable for you</h5>
 
-    <p>According to NHS, adults aged 65 and over should aim to
-      be physically active every day, even if it's just light activity
-      do activities that improve strength, balance and flexibility on at least 2 days a week
-      do at least 150 minutes of moderate intensity activity a week or 75 minutes of vigorous intensity activity if you
-      are already active, or a combination of both
-      reduce time spent sitting or lying down and break up long periods of not moving with some activity</p>
-    <span>Some exercises include:</span>
-    <br><br>
-    <span><strong>Light Activity</strong></span>
-    <ul>
-      <li>Getting up to make a cup of tea</li>
-      <li>Moving around your home</li>
-      <li>Walking at a slow pace</li>
-      <li>Cleaning and dsting</li>
-      <li>Vacuuming</li>
-      <li>Making the bed</li>
-      <li>Standing up</li>
-    </ul>
+  <section class="two-columns">
+    <div class="left-column">
+        <h2>Simple Exercises You Can Do Each Day</h2>
+        <h5>*It is always best to consult your primary care doctor regarding which exercises are suitable for you</h5>
 
+        <p>According to NHS, adults aged 65 and over should aim to
+        be physically active every day, even if it's just light activity
+        do activities that improve strength, balance and flexibility on at least 2 days a week
+        do at least 150 minutes of moderate intensity activity a week or 75 minutes of vigorous intensity activity if you
+        are already active, or a combination of both
+        reduce time spent sitting or lying down and break up long periods of not moving with some activity
+        </p>
+    </div>
+    <div class="right-column">
+        <span>
+            <strong>
+            Some exercises include:
+            </strong>
+        </span>
+        <br><br>
+         <span><strong>Light Activity</strong></span>
 
-    <span><strong>Moderate Activity</strong></span>
-    <ul>
-      <li>Walking for health
-      </li>
-      <li>Riding a bike
-      </li>
-      <li>Dancing for fitness</li>
-      <li>Pushing a lawn mower</li>
-      <li>Hiking</li>
-    </ul>
-    <span><strong>Vigorous Activity</strong></span>
-    <ul>
-      <li>Running</li>
-      <li>Aerobics</li>
-      <li>Swimming</li>
-      <li>Riding a bike fast or on hills</li>
-      <li>Football</li>
-      <li>Hiking uphill</li>
-      <li>Dance for fitness</li>
-      <li>Martial arts</li>
-    </ul>
+        <ul>
+            <li>Getting up to make a cup of tea</li>
+            <li>Moving around your home</li>
+            <li>Walking at a slow pace</li>
+            <li>Cleaning and dsting</li>
+            <li>Vacuuming</li>
+            <li>Making the bed</li>
+            <li>Standing up</li>
+        </ul>
 
-    <span><strong>Muscle Strengthening Activity</strong></span>
-    <ul>
-      <li>Carrying heavy shopping bags</li>
-      <li>Yoga</li>
-      <li>Pilates</li>
-      <li>Tai chi</li>
-      <li>Lifting weights</li>
-      <li>Working with resistance bands</li>
-      <li>Doing exercises that use your own body weight, such as push-ups and sit-ups</li>
-      <li>Heavy gardening, such as digging and shovelling</li>
-    </ul>
+        <span><strong>Moderate Activity</strong></span>
+
+        <ul>
+            <li>Walking for health
+            </li>
+            <li>Riding a bike
+            </li>
+            <li>Dancing for fitness</li>
+            <li>Pushing a lawn mower</li>
+            <li>Hiking</li>
+        </ul>
+
+        <span><strong>Vigorous Activity</strong></span>
+        <ul>
+            <li>Running</li>
+            <li>Aerobics</li>
+            <li>Swimming</li>
+            <li>Riding a bike fast or on hills</li>
+            <li>Football</li>
+            <li>Hiking uphill</li>
+            <li>Dance for fitness</li>
+            <li>Martial arts</li>
+        </ul>
+        <span><strong>Muscle Strengthening Activity</strong></span>
+        <ul>
+            <li>Carrying heavy shopping bags</li>
+            <li>Yoga</li>
+            <li>Pilates</li>
+            <li>Tai chi</li>
+            <li>Lifting weights</li>
+            <li>Working with resistance bands</li>
+            <li>Doing exercises that use your own body weight, such as push-ups and sit-ups</li>
+            <li>Heavy gardening, such as digging and shovelling
+        </ul>
+</div>
   </section>
   <footer id="footer">
     <p>2025 Halo Health Hub. All Rights Reserved.</p>
