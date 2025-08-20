@@ -177,8 +177,9 @@ async function getData() {
     });
 
     document.getElementById("button").addEventListener("click", function(){
+        document.getElementById("stuff").style.display = "block";
         var para = document.getElementById("para");
-        para.innerHTML = `Doctors Note about your visit are: ${doc}. Medicine prescribed for your treatment: ${meds} `;
+        para.innerHTML = `Doctors Note about your visit are: ${doc}. Medicine prescribed for your treatment: ${meds}. `;
     });
 
 }
