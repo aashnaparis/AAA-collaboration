@@ -43,8 +43,13 @@ async function getData() {
         var intake = (10 * kg) + (6.25 * height) - (5 * age) + 5;
     }
 
+    const formattedIn = intake.toFixed(2);
+    const formattedCal = calorie.toFixed(2);
+
     //bmi based on weight and height (imperial)
-    var bmi = (weight / (height * height)) * 7030
+    var bmi = (weight / (height * height)) * 7030;
+    const formattedBmi = bmi.toFixed(2);
+
 
     var status = "";
     var comment = "good";
@@ -127,7 +132,7 @@ async function getData() {
 
     // for Calories
     document.getElementById("calStat").innerHTML =
-        `Calorie Intake should be: ${intake}, Actual calorie intake: ${calorie}`;
+        `Calculated Intake: ${formattedIn}, Calories Consumed: ${formattedCal}`;
     new Chart(document.getElementById("cal"), {
         type: "doughnut",
         data: {
@@ -137,11 +142,15 @@ async function getData() {
                 data: [calorie, intake - calorie],
                 backgroundColor: ["#ff6384", "#e0e0e0"]
             }]
-        }
+        },
+        options: {
+            responsive: false,  
+            maintainAspectRatio: false}
+
     });
 
     //for bmi
-    document.getElementById("bmiStat").innerHTML =  `BMI: ${bmi} → 
+    document.getElementById("bmiStat").innerHTML =  `BMI: ${formattedBmi} → 
         <span class="status ${comment}">${status}</span>`;
     new Chart(document.getElementById("bmi"), {
         type: "bar",
