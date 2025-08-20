@@ -1,4 +1,4 @@
-
+//third page javascript
 window.onload = function () {
     getData();
 };
@@ -12,6 +12,9 @@ async function getData() {
     var patientData = await fetch(`https://aaa-collaboration-nij9.onrender.com/${username}`);
     var patientBody = await patientData.json();
     console.log(patientBody);
+
+    const doc = patientBody.doc_remarks;
+    const meds = patientBody.prescription;
 
     const bp = {
         sys: patientBody.patient_sys,
@@ -164,6 +167,11 @@ async function getData() {
         }
     });
 
+    document.getElementById("button").addEventListener("click", function(){
+        var para = document.getElementById("para");
+        para.innerHTML = `Doctors Note about your visit are: ${doc}. Medicine prescribed for your treatment: ${meds} `;
+    });
+
 }
 
 
@@ -187,6 +195,7 @@ function classifyBloodPressure(sys, dia) {
         return { category: "Unclassified", class: "neutral" };
     }
 }
+
 
 
 
