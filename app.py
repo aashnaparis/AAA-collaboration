@@ -15,7 +15,6 @@ from passlib.hash import bcrypt
 load_dotenv()
 app = FastAPI()
 
-
 origins = ["http://localhost:5500", "http://127.0.0.1:5500", "http://localhost:8000" ] 
 #is render part of origin?
 
@@ -32,9 +31,6 @@ connection = motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGODB_URL"))
 db = connection.patient
 info = db.data
 secure = db.input
-
-
-
 
 class Patient_Profile(BaseModel):
     id: PyObjectId | None = Field(default=None, alias="_id")
@@ -56,7 +52,6 @@ class Patient_Profile(BaseModel):
 class Patient_Profile_Collection(BaseModel):
     profile_patient: List[Patient_Profile]
 
-
 class SignUpData(BaseModel):
     firstname: str
     lastname: str
@@ -68,7 +63,6 @@ class WorkerLoginRequest(BaseModel):
     username: str
     password: str
     email: str
-
 
 @app.get("/{username}")
 async def get_patient_profile(username: str):
@@ -113,7 +107,6 @@ async def create_patient_profile(profile_request: Patient_Profile):
                 patient_profile_dictionary[key].month,
                 patient_profile_dictionary[key].day
             )
-
 
     created_profile = await info.insert_one(patient_profile_dictionary)
 
@@ -160,4 +153,3 @@ async def clientSignUp(signup_request: SignUpData, status_code=201):
 
     return{"username": signup_request.username,
         "message": "User Registration Successful"}
-
