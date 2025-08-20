@@ -282,7 +282,7 @@ a {
 .two-columns{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 30px;
   align-items: start;
   margin: 40px 0;
 }
@@ -306,6 +306,43 @@ h2{
   font-family: 'Merriweather';
   color:#044786;
   margin-left: 30px;
+}
+.left-column p{
+  line-height: 1.5;
+  font-size: 1rem;
+}
+.general-tips li{
+  margin-bottom: 10px;
+}
+.exercise-container{
+  margin: 20px 0;
+  background:rgb(100, 212, 237);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.exercise-container:hover{
+  transform: scale(1.02);
+  background:  #f5d76e;
+  transform: translateY(-2px)
+}
+.general-tips img{
+  height: 375px;
+  margin-bottom: 20px;
+}
+.exercise-container h4{
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 0;;
+  color:#044786; ;
+}
+.exercise-container ul{
+  list-style:circle;
+  align-items: center;
+}
+.exercise-container li{
+  margin-bottom: 1px;
+  align-items: center;
 }
 section{
   background: #fff;
