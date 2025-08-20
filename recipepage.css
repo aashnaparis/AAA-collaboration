@@ -34,15 +34,25 @@ h1{
 }
 
 #halo{
-  height: 40px;
+  height: 60px;
   width: auto;
   object-fit: contain;
 }
 
 h2, h3{
   font-family: 'Merriweather', sans-serif;
+  font-size: 1.3rem;
   color: #044786;
-  margin-top: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+hr{
+  width: 90%;
+  height: 2px;
+  background: rgb(0, 168, 204);
+  border-radius: 0px;
+  border-radius: 5px; 
 }
 p, li{
   font-family: 'Quicksand',sans-serif;
