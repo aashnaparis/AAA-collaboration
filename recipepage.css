@@ -17,8 +17,8 @@ body{
   line-height: 1.6;
 }
 
-.halo{
-  size: 50px;
+li img{
+  height: 150px;
 }
 
 h5{
@@ -32,6 +32,13 @@ h1{
   text-align: center;
   color: #033b70
 }
+
+#halo{
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 h2, h3{
   font-family: 'Merriweather', sans-serif;
   color: #044786;
@@ -90,10 +97,9 @@ input{
 }
 
 header {
-  /*background-color: rgb(4, 71, 134);*/
   background: linear-gradient(135deg, rgb(4, 71, 134), rgb(0, 168, 204));
   padding: 1rem;
-  
+  height: auto;
   box-shadow: 0 15px 15px rgba(0,0,0,0.2);
   height: 55px;
   width: 97%;
@@ -107,6 +113,12 @@ header {
    align-items: center;
   
 }
+header h1{
+  font-family: 'Merriweather',sans-serif;
+  font-size: 1.8rem;
+  margin: 0;
+
+}
 footer p {
   padding: 20px;
   background-color: #044786;
@@ -115,15 +127,33 @@ footer p {
   text-align: center;
   border-radius: 12px 12px 0 0;
 }
-
+.navBox{
+  display: flex;
+  /*align-items: center;*/
+  justify-content: center;
+  width: 100%;
+}
 .navBar {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
 }
-
-
+.navBarLeft,
+.navBarRight,
+.navBarCenter{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navBarCenter{
+  justify-content: center;
+  flex: 2;
+}
 .navCont a {
   position: relative;
   font-size: 1rem;
@@ -245,9 +275,10 @@ section{
 button{
   background: linear-gradient(135deg, #2a5298, #0074D9);
   color:  #f5d76e;
-  font-family: 'Merriweather';
+  font-family: 'Quicksand';
   margin: 10px;
   padding: 10px 20px;
+  width: 150px;
   font-weight: 500;
   letter-spacing: 0.5px;
   border: none;
