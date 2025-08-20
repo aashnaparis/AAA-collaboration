@@ -12,10 +12,35 @@
 body{
   font-family: 'Merriweather';
   font-weight: 300;
+  background: #f9fafc;
+  color: #333;
+  line-height: 1.6;
 }
 
-h1, h2, h3, h4,h5, h6{
-  font-family: 'Quicksand', ans serif;
+.halo{
+  size: 50px;
+}
+
+h5{
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1{
+  font-family: 'Merriweather', serif;
+  font-size: 2.5rem;
+  margin-bottom: 100px;
+  text-align: center;
+  color: #033b70
+}
+h2, h3{
+  font-family: 'Merriweather', sans-serif;
+  color: #044786;
+  margin-top: 40px;
+}
+p, li{
+  font-family: 'Quicksand',sans-serif;
+  font-size: 1rem;
+  color: #444;
 }
       
 .modal{
@@ -32,18 +57,24 @@ h1, h2, h3, h4,h5, h6{
         }
 
 .modalContent {
-     /*background-color: #fefefe;*/
-     background: rgba(255, 255, 255, 0.8);
-     backdrop-filter: blur(8px);
-     border-radius: 20px;
-
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
   margin: 15% auto; 
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #888;
-  width: 80%; 
+  width: 90%; 
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
-
+input{
+  width: 100%;
+  padding: 10px;
+  margin: 2px 0 2px 0; 
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 'Quicksand';
+}
 .close {
      color: #aaa;
   float: right;
@@ -62,6 +93,7 @@ header {
   /*background-color: rgb(4, 71, 134);*/
   background: linear-gradient(135deg, rgb(4, 71, 134), rgb(0, 168, 204));
   padding: 1rem;
+  
   box-shadow: 0 15px 15px rgba(0,0,0,0.2);
   height: 55px;
   width: 97%;
@@ -72,22 +104,47 @@ header {
   /*position: absolute;*/
    justify-content: space-between;
    border-radius: 10px; 
+   align-items: center;
   
+}
+footer{
+  padding: 20px;
+  background-color: #044786;
+  color:#fff;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
 }
 
 .navBar {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
 }
 
 
-.navCont {
+.navCont a {
+  position: relative;
+  font-size: 1rem;
+  text-decoration: none;
   display: inline;
   margin: 20px;
+  color: #fff;
   font-size: large;
-
+}
+.navCont a::after{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left:0;
+  background: #f5d76e;
+  transition: width 0.3s;
+  
+}
+.navCont a:hover::after{
+  width: 100%
 }
 
 #myBtn {
@@ -100,8 +157,9 @@ a {
   text-decoration: none;
 }
 .recipeLeft {
-  background-color: rgb(4, 71, 134);
+  background-color: rgb(29, 99, 164);
   padding: 5px;
+  gap:25px;
   margin: 40px;
   width: 240px;
   height: 240px;
@@ -110,11 +168,13 @@ a {
   display: flex;
   justify-self: flex-start;
   border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .recipeRight {
-  background-color: rgb(4, 71, 134);
-padding: 5px;
+  background-color: rgb(29, 99, 164);
+  padding: 5px;
+  gap: 25px;
   margin: 40px;
   width: 240px;
   height: 240px;
@@ -124,6 +184,7 @@ padding: 5px;
   border-radius: 15px;
   justify-self: flex-end;
   align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   
 }
 
@@ -156,19 +217,51 @@ padding: 5px;
   justify-content: center;
 }
 
-section, #portion {
+#portion {
   background: #fff;
   border-radius: 15px;
   margin: 20px;
  height: 500px;
   display: flex;
+  padding: 20px;
   justify-self: center;
    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   
 }
-
+section{
+  background: #fff;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 20px;         /* add breathing room */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 
 #portionText {
     display: flex;
   justify-self: center
+}
+
+button{
+  background: linear-gradient(135deg, #2a5298, #0074D9);
+  color:  #f5d76e;
+  font-family: 'Merriweather';
+  margin: 10px;
+  padding: 10px 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+button:hover{
+  background:linear-gradient(135deg, #f5d76e, #f7ca18);
+  transform: translateY(-2px);
+  color: #1e3c72;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+button:active{
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
