@@ -107,7 +107,7 @@ header {
    align-items: center;
   
 }
-footer{
+footer p {
   padding: 20px;
   background-color: #044786;
   font-family: 'Quicksand';
