@@ -148,10 +148,6 @@ async function loginUser() {
   var password = document.getElementById('login-password').value;
   var email = document.getElementById('login-email').value;
 
-  // setting a global username across pages
-  localStorage.setItem("username", username);
-  localStorage.setItem("email", email);
-
 
   var requestBody = {
     "username": username,
@@ -179,27 +175,22 @@ async function loginUser() {
       var responseBody = await response.json();
       console.log(responseBody);
       alert(`Welcome, ${responseBody.username}! You're logged in`);
+      localStorage.setItem("username", responseBody.username);
 
-      window.onload = function () {
-        const email = localStorage.getItem("email");
-        if (isGovEmail(email)) { // thus does email look like "johndoe@halo.gov"
-          var touch = document.getElementById("button");
-          touch.href = "second.html";
-          touch.textContent = "Patient Sheet";
+      if (isGovEmail(responseBody.email)) { // thus does email look like "johndoe@halo.gov"
+        var touch = document.getElementById("button");
+        touch.href = "second.html";
+        touch.textContent = "Patient Sheet";
 
-        } else {
-          var touch = document.getElementById("button");
-          touch.href = "third.html";
-          touch.textContent = "Dashboard";
-        }
+      } else {
+        var touch = document.getElementById("button");
+        touch.href = "third.html";
+        touch.textContent = "Dashboard";
       }
-
-
     }
   } catch (err) {
     console.error("Error logging in, err");
   }
-
 }
 
 async function signupUser() {
@@ -245,14 +236,4 @@ async function signupUser() {
   }
 
 }
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  // check if patient sheet was completed or back button was pressed
-  if (localStorage.getItem("patientSheetDone") === "true") {
-    var touch = document.getElementById("button");
-    touch.href = "second.html";
-    touch.textContent = "Patient Sheet";
-  }
-});
 

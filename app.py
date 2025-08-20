@@ -16,7 +16,7 @@ load_dotenv()
 app = FastAPI()
 
 
-origins = ["http://localhost:5500", "http://127.0.0.1:5500"] 
+origins = ["http://localhost:5500", "http://127.0.0.1:5500", "http://localhost:8000" ] 
 #is render part of origin?
 
 app.add_middleware(
@@ -37,7 +37,6 @@ secure = db.input
 
 
 class Patient_Profile(BaseModel):
-
     id: PyObjectId | None = Field(default=None, alias="_id")
     patient_name: str
     patient_age: int
@@ -71,17 +70,17 @@ class WorkerLoginRequest(BaseModel):
     email: str
 
 
-@app.get("/profile/{username}")
+@app.get("/{username}")
 async def get_patient_profile(username: str):
     try:
+        
+        user_data = await secure.find_one({"username": username}) #makes no sense would the doctor and other usernames crash it
 
-        user = await secure.find_one({"username": username}) #makes no sense would the doctor and other usernames crash it
-
-        if not user:
+        if not user_data:
             raise HTTPException(status_code=404, detail="User not found in input database")
 
-        firstname = user.get("firstname")
-        lastname = user.get("lastname")
+        firstname = user_data.get("firstname")
+        lastname = user_data.get("lastname")
         if not firstname:
             raise HTTPException(status_code=404, detail="Firstname not found for user")
         if not lastname:
