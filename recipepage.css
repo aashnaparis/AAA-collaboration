@@ -291,8 +291,21 @@ a {
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
-.left-column h2{
-  margin-bottom: 10px;
+h2{
+  font-size: 60px;
+  color: #1f4e79;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.right-column p{
+  display: flex;
+  align-items:left;
+  flex-direction: column;
+  justify-content: right;
+  font-size: 65px;
+  font-family: 'Merriweather';
+  color:#044786;
+  margin-left: 30px;
 }
 section{
   background: #fff;
