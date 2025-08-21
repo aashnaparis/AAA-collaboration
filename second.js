@@ -233,13 +233,6 @@ function prepPrint(){
 
 }
 
-// async function getData(){
-//   //want to do things with this info on the third page
-//   var patientData = await fetch("https://aaa-collaboration.onrender.com/aashna");
-//   var patientBody = await patientData.json();
-//   console.log(patientBody);
-
-// }
 
 async function postData(){
 

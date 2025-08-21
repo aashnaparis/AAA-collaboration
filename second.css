@@ -1,17 +1,40 @@
+@font-face{
+  font-family: 'Merriweather';
+  src: url(fonts/Merriweather_48pt-Light.ttf);
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Quicksand';
+ src: url(fonts/Quicksand-SemiBold.ttf );
+}
+
 body{
     margin: 20px;
+    background: rgb(100, 212, 237);
+    padding: 0;
+}
 
+label{
+    font-family: 'Quicksand';
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 h1{
     text-align: center;
+    font-family: 'Merriweather';
+    color: #033b70;
+    padding: 20px;
 }
 
 .container{
-    border: 3px solid salmon;
+    border: 10px solid #033b70;
     margin: 10px;
+    background: rgb(152, 235, 254);
     padding: 20px;
     height: 100vh;
+    box-shadow: ;
 }
 
 .item{
@@ -21,7 +44,6 @@ h1{
     
     
 }
-
 @media print
 {    
     .no-print
