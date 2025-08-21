@@ -25,22 +25,30 @@
         </div>
         <!--1-->
         <div class="item">
+          <label for="temp">Temperature:
+            <span id="tempSpan">
+              <input type="number" placeholder="Temperature" id="temp" name="temp" />
+            </span>
+          </label>
+        </div>
+        <!--2-->
+        <div class="item">
           <label for="age">Age:
             <span id="ageSpan">
               <input type="number" placeholder="Age" id="age" name="age" />
             </span>
           </label>
         </div>
-        <!--2-->
-        <div class="item">
-          <label for="height">Height:
-            <span id="heightSpan">
-              <input type="number" placeholder="Height" id="height" name="height" />
+        <!--3-->
+         <div class="item">
+          <label for="cal">Calories:
+            <span id="calSpan">
+              <input type="number" placeholder="Calories" id="cal" name="cal" />
             </span>
           </label>
         </div>
-        <!--3-->
-        <div class="item">
+        <!--4-->
+         <div class="item">
           <label for="gender">Gender:
             <span id="genderSpan">
               <select name="gender" id="gender">
@@ -53,18 +61,7 @@
             </span>
           </label>
         </div>
-        <!--4-->
-
-        <div class="item">
-          <label for="weight">Weight:
-            <span id="weightSpan">
-              <input type="number" placeholder="Weight" id="weight" name="weight" />
-            </span>
-          </label>
-        </div>
         <!--5-->
-
-
         <div class="item">
           <label for="dia-pressure">Diastolic Blood Pressure:
             <span id="diaSpan">
@@ -73,7 +70,14 @@
           </label>
         </div>
         <!--6-->
-
+         <div class="item">
+          <label for="height">Height:
+            <span id="heightSpan">
+              <input type="number" placeholder="Height" id="height" name="height" />
+            </span>
+          </label>
+        </div>
+        <!--7-->
         <div class="item">
           <label for="sys-pressure"> Systolic Blood Pressure:
             <span id="sysSpan">
@@ -81,26 +85,15 @@
             </span>
           </label>
         </div>
-        <!--7-->
-
-        <div class="item">
-          <label for="temp">Temperature:
-            <span id="tempSpan">
-              <input type="number" placeholder="Temperature" id="temp" name="temp" />
-            </span>
-          </label>
-        </div>
         <!--8-->
-
         <div class="item">
-          <label for="cal">Calories:
-            <span id="calSpan">
-              <input type="number" placeholder="Calories" id="cal" name="cal" />
+          <label for="weight">Weight:
+            <span id="weightSpan">
+              <input type="number" placeholder="Weight" id="weight" name="weight" />
             </span>
           </label>
         </div>
         <!--9-->
-
         <div class="item">
           <label for="last-vis">Last Visited:
             <span id="lastVis">
@@ -114,34 +107,25 @@
       <div id="mid-col">
         <div class="item">
           <fieldset id="field-check">
-            <span id="pre">
               <legend>Any Pre-Existing Condition</legend>
               
-              <input type="checkbox" name="box" id="none" value="None" />
-              <label for="none">None of the Above</label>
               
-              <input type="checkbox" name="box" value="Diabetes" id="diabetes" />
-              <label for="diabetes">Diabetes</label>
+              <label for="none"><input type="checkbox" name="box" id="none" value="None" />None of the Above</label>
+          
+              <label for="diabetes"><input type="checkbox" name="box" value="Diabetes" id="diabetes" />Diabetes</label>
+            
+              <label for="hyper"><input type="checkbox" value="Hypertension" name="box" id="hyper" />Hypertension</label>
               
-              <input type="checkbox" value="Hypertension" name="box" id="hyper" />
-              <label for="hyper">Hypertension</label>
+              <label for="asthma"><input type="checkbox" value="Asthma" name="box" id="asthma" />Asthma</label>
               
-              <input type="checkbox" value="Asthma" name="box" id="asthma" />
-              <label for="asthma">Asthma</label>
+              <label for="arthritis"><input type="checkbox" value="Arthritis" name="box" id="arthritis" />Arthritis</label>
               
-              <input type="checkbox" value="Arthritis" name="box" id="arthritis" />
-              <label for="arthritis">Arthritis</label>
+              <label for="epilepsy"><input type="checkbox" value="Epilepsy" name="box" id="epilepsy" />Epilepsy</label>
               
-              <input type="checkbox" value="Epilepsy" name="box" id="epilepsy" />
-              <label for="epilepsy">Epilepsy</label>
+              <label for="depression"><input type="checkbox" value="Depression" name="box" id="depression" />Depression</label>
               
-              <input type="checkbox" value="Depression" name="box" id="depression" />
-              <label for="depression">Depression</label>
-              
-              <input type="checkbox" value="Heart disease" name="box" id="heart-dis" />
-              <label for="heart-dis">Heart Disease</label>
+              <label for="heart-dis"><input type="checkbox" value="Heart disease" name="box" id="heart-dis" />Heart Disease</label>
   
-            </span>
           </fieldset>
         </div>
 

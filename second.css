@@ -60,7 +60,7 @@ input, select, textarea{
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 14px;
-    width: 100%;
+    width: 95%;
     transition: 0.3s;
 }
 input:focus, select:focus, textarea:focus{
@@ -79,10 +79,19 @@ textarea{
     color: #004080;
     font-family: 'Merriweather';
 }
+#field-check label{
+    font-family: 'Quicksand';
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
 #field-check{
     border: 2px solid #ccc;
     border-radius: 8px;
-    padding: 10px 15px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
 }
 
 .container{
@@ -97,13 +106,6 @@ textarea{
 #mid-col{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-#mid-col .item, #field-check{
-    width: 60%;
-    max-width: 500px;
     align-items: center;
 }
 
