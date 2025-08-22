@@ -70,8 +70,9 @@ input:focus, select:focus, textarea:focus{
     box-shadow: 0 0 6px rgba(0,120,215,0.3);
 }
 textarea{
-    min-height: 100px;
+    min-height: 200px;
     resize: vertical;
+    min-width: 500px;
 
 }
 #field-check legend{
