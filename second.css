@@ -6,18 +6,23 @@
 
 @font-face{
   font-family: 'Quicksand';
- src: url(fonts/Quicksand-SemiBold.ttf );
+ src: url(fonts/Quicksand-SemiBold.ttf);
 }
 
 body{
     margin: 20px;
-    background: rgb(100, 212, 237);
+    background: #f4f9fc;
     padding: 0;
+    font-family: 'Quicksand';
+    color: #033b70;
 }
 
 label{
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #033b70;
 }
 
 h1{
@@ -25,43 +30,71 @@ h1{
     font-family: 'Merriweather';
     color: #033b70;
     padding: 20px;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #d1a813 ;
+    margin-bottom: 20px;
+
 }
-button{
+
+#button{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    margin-top: 20px;
-    background: #0078d7;
+    margin-top: 40px;
+    
+}
+button{
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border-radius: 30px;
+     border: none;
+     font-size: 15px;
+    font-weight: 600;
+    padding: 12px 28px;
+    font-family: 'Merriweather';
+
+}
+button[type="submit"]{
+    background: linear-gradient(135deg, #033b70, #005bb5);
     color: #f5d76e;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
 }
-button:hover{
-    background: #005bb5;
+button[type="submit"]:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(2, 71, 135, 0.3);
 }
+
 button[type="reset"]{
-    background: #f44336;
+ 
+     background: linear-gradient(135deg, #f44336, #c62828);
+    color: #fff;
 }
+
 button[type="reset"]:hover{
-    background: #c62828;
+     transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(244,67,54,0.4);
 }
+
 button:last-child{
-    background: #4CAF50;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: #fff;
 }
 button:last-child:hover{
-    background: #388E3C;
+     box-shadow: 0 6px 15px rgba(76,175,80,0.4);
+    transform: translateY(-2px);
 }
+
 input, select, textarea{
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    padding: 12px 14px;
+    border: 2px solid #cbd8e3;
+    border-radius: 12px;
     font-size: 14px;
     width: 95%;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    background: #f9fcff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 input:focus, select:focus, textarea:focus{
     border-color: #0078d7;
@@ -70,15 +103,14 @@ input:focus, select:focus, textarea:focus{
     box-shadow: 0 0 6px rgba(0,120,215,0.3);
 }
 textarea{
-    min-height: 200px;
+    min-height: 150px;
     resize: vertical;
-    min-width: 500px;
-
 }
 #field-check legend{
     font-weight: bold;
-    color: #004080;
+    color: #033b70;
     font-family: 'Merriweather';
+    font-size: 1rem;
 }
 #field-check label{
     font-family: 'Quicksand';
@@ -88,22 +120,27 @@ textarea{
     gap: 6px;
 }
 #field-check{
-    border: 2px solid #ccc;
-    border-radius: 8px;
+    border: 2px solid #cbd8e3;
+    border-radius: 10px;
     padding: 15px;
+    background-color: #f9fbff;
     display: grid;
     grid-template-columns: repeat(4,1fr);
+    gap: 12px;
 }
 
 .container{
+    justify-content: center;
     display: grid;
-    border: 8px solid #033b70;
+    max-width: 800px;
+    margin: 30px auto;
     border-radius: 15px;
-    background: rgb(152, 235, 254);
-    padding: 20px;
+    background: #ffffff;
+    padding: 40px;
     height: auto;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(3,59,112,0.15);
 }
+.container
 #mid-col{
     display: flex;
     flex-direction: column;
@@ -131,7 +168,7 @@ textarea{
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 #sec-col .item{
     width:70%;
