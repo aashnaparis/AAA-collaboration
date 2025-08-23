@@ -245,15 +245,7 @@ a {
 }
 .recipes {
   background-color:  rgb(78, 182, 205);
-  border-radius: 20px;
-  align-items: center;
-  gap: 20px;
-  display: flex; 
-  flex-direction: column;
-  height: 650px;
-  width: 1300px;
-  padding: 20px;
-  margin: 20px auto;
+
 }
 .recipe-grid{
   display: grid;
