@@ -1,0 +1,50 @@
+@font-face{
+  font-family: 'Merriweather';
+  src: url(fonts/Merriweather_48pt-Light.ttf);
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Quicksand';
+ src: url(fonts/Quicksand-SemiBold.ttf );
+}
+
+body{
+  font-family: 'Merriweather';
+  font-weight: 300;
+  background: #f9fafc;
+  color: #333;
+  line-height: 1.6;
+}
+
+h5{
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1{
+  font-family: 'Merriweather', serif;
+  font-size: 2.5rem;
+  margin-bottom: 100px;
+  text-align: center;
+  color: #033b70
+}
+h2, h3{
+  font-family: 'Merriweather', sans-serif;
+  color: #044786;
+  margin-top: 40px;
+      display: flex;
+    justify-self: center;
+}
+p, li{
+  font-family: 'Quicksand',sans-serif;
+  font-size: 1rem;
+  color: #444;
+}
+
+img {
+    height: 300px;
+
+    display: flex;
+    justify-self: center;
+    
+}
