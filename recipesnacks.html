@@ -6,45 +6,129 @@
     <title>Document</title>
     <link rel="stylesheet" href="recipesnacks.css">
 </head>
+ <script src="index.js" ></script>
 <body>
+    
+    <header id="homepage-header">
+    <div class="navBox">
+      <div class="navBar">
+
+        <div class="navBarLeft">
+
+            <li>
+                <button id="loginBtn" onclick="showMod()">LOGIN</button>
+            </li>
+
+            <li>
+                <button id="signupBtn" onclick="showMod()">SIGN UP</button>
+            </li>
+        </div>
+
+
+        <div class="navBarCenter">
+            <li>
+                <h1>
+                    Halo Health Hub
+                </h1>
+            </li>
+            <li>
+                <img id="halo" src="images/1000_F_317420591_QGKuwskRQKp9djJIGlklnVWnRjFy04eG-removebg-preview.png" alt="">
+            </li>
+        </div>
+
+        <div class="navBarRight">
+
+            <li class="navCont">
+                <a href="index.html">Home Page</a>
+            </li>
+            <li class="navCont">
+                <a href="recipemeals.html">Healthy Meal Ideas</a>
+            </li>            
+            <li class="navCont">
+                <a id="button"></a>
+            </li>
+        </div>
+        </div>
+    </div>
+  </header>
+
+    <div id="loginModal" class="modal">
+    <div class="modalContent">
+      <span class="close">&times;</span>
+      <div id="loginform">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <label for="login-username">Username:</label>
+          <br>
+          <input type="text" id="login-username" name="username" placeholder="Enter Username" required><br>
+          <br>
+
+          <label for="login-email">Email</label><br>
+          <input type="email" name="login-email" id="login-email" placeholder="Enter Email Address" required><br><br>
+
+          <label for="login-password">Password </label><br>
+          <input type="password" name="login-password" id="login-password" placeholder="Enter Your Password" required><br><br>
+
+          <button type="submit" onclick="verifyLogin()">Login</button>
+
+          <p>Don't have an account?
+            <button onclick="showModal(loginModal)">Sign-Up Here</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="signupModal" class="modal">
+    <div class="modalContent">
+      <span class="close">&times;</span>
+      <form id="signupForm">
+          <h2>Sign-Up Below</h2>
+          <label for="fName">First Name:</label>
+          <br>
+          <input type="text" id="fName" placeholder="Enter First Name" required>
+          <br><br>
+          <label for="lName">Last Name:</label>
+          <br>
+          <input type="text" id="lName" placeholder="Enter Last Name" required>
+          <br><br>
+          <label for="email">Email:</label>
+          <br>
+          <input type="email" id="email"  placeholder="Enter Email" required>
+          <br><br>
+          <label for="username">Username:</label>
+          <br>
+          <input type="text" id="username" placeholder="Enter Username" required>
+          <br> <br>
+          <label for="password1">Password:</label>
+          <br>
+          <input type="password" id="password1" placeholder="Enter Password" required>
+          <br> <br>
+          <label for="confirm">Confirm Password:</label>
+          <br>
+          <input type="password" id="confirm" placeholder="Confirm Password" required>
+          <br> <br> <br>
+          <!-- testing a change-->
+          <button type="submit" onclick="verifySignup()">Sign-Up</button>
+          <button type="reset">Reset</button>
+          <p>Have an account already?
+            <button onclick="showModal(loginModal)">Login Here</button>
+          </p>
+          
+      </form>
+    </div>
+  </div>
+
+
+  <br><br><br><br>
     <h1>Nutritious Snack Alternatives</h1>
-    <h6></h6>
+    <hr>
+
 
     <section> 
 
-<hr>  
-  <div>
+      <div class="food">
 
-    <div>
-
-     <h3>Frozen Yoghurt Bites</h3>
-
-     <a href="https://www.bbc.co.uk/food/collections/healthy_snacks">     <img src="images/frozen_yoghurt_bites_52694_16x9.jpg" alt=""></a>
-     <h4>Ingredients</h4>
-     <p>
-    <ul>
-        <li>2 tbsp clear honey </li>
-        <li> 300g/10½oz Greek-style yoghurt</li>
-        <li>300g/10½oz mixed fresh fruit such as strawberries, blueberries, mango and kiwi, chopped into small pieces (blueberries left whole)</li>
-        <li>100g/3½oz chocolate, broken into pieces (optional)</li>
-        <li>30g/1oz granola (optional)</li>
-
-     </ul>
-    </p>
-    <h4>Instructions</h4>
-    <p>
-        <ol>
-            <li>Prepare a large baking tray that can fit in the freezer by lining it with greaseproof paper.</li>
-            <li>Cut into small cubes.</li>
-            <li>In a bowl, mix together the honey and yoghurt, then combine with the fruits.<li>
-            <li>Spoon 12 blobs of the yoghurt and fruit mixture onto the tray and place in the freezer for 1 hour.</li>
-            <li>If topping with chocolate, after an hour, melt the chocolate in the microwave in 30-second intervals, stirring between or using a bain marie.</li>
-            <li>Once the yoghurt is frozen solid, drizzle the melted chocolate over the bites using a piping bag or fork. Sprinkle over the granola and freeze for 20 minutes more.</li>
-            <li>Purée the soup.</li>       
-  </div>
-
-      <div>
-<hr>
      <h3>Homemade Granola Bars</h3>
 
      <a href="https://www.loveandlemons.com/granola-bars-recipe/">     <img src="images/granola_bars.jpg" alt=""></a>
@@ -73,7 +157,7 @@
      
   </div>
 <hr>
-      <div>
+      <div class="food">
 
      <h3>Chocolate Zucchini Bread</h3>
 
@@ -110,8 +194,37 @@
 
     </p>
   </div>
+<div class="food">
+<hr>
+     <h3>Frozen Yoghurt Bites</h3>
+
+     <a href="https://www.bbc.co.uk/food/collections/healthy_snacks">     <img src="images/frozen_yoghurt.jpeg" alt=""></a>
+     <h4>Ingredients</h4>
+     <p>
+    <ul>
+        <li>2 tbsp clear honey </li>
+        <li> 300g/10½oz Greek-style yoghurt</li>
+        <li>300g/10½oz mixed fresh fruit such as strawberries, blueberries, mango and kiwi, chopped into small pieces (blueberries left whole)</li>
+        <li>100g/3½oz chocolate, broken into pieces (optional)</li>
+        <li>30g/1oz granola (optional)</li>
+
+     </ul>
+    </p>
+    <h4>Instructions</h4>
+    <p>
+        <ol>
+            <li>Prepare a large baking tray that can fit in the freezer by lining it with greaseproof paper.</li>
+            <li>Cut into small cubes.</li>
+            <li>In a bowl, mix together the honey and yoghurt, then combine with the fruits.<li>
+            <li>Spoon 12 blobs of the yoghurt and fruit mixture onto the tray and place in the freezer for 1 hour.</li>
+            <li>If topping with chocolate, after an hour, melt the chocolate in the microwave in 30-second intervals, stirring between or using a bain marie.</li>
+            <li>Once the yoghurt is frozen solid, drizzle the melted chocolate over the bites using a piping bag or fork. Sprinkle over the granola and freeze for 20 minutes more.</li>
 
   </div>
+
 </section> 
+  <footer id="footer">
+    <p>2025 Halo Health Hub. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
